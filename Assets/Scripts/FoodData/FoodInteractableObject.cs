@@ -22,6 +22,7 @@ public enum Cookedness
 public enum FoodState
 {
     OnDrag,
+    OnPlaced,
     OnCooking
 }
 
@@ -97,22 +98,24 @@ public class FoodInteractableObject : InteractableObject
 
     private void Update()
     {
-        switch (foodState)
+        if (foodState == FoodState.OnDrag)
         {
-            case FoodState.OnDrag:
-                Vector3 screenPos = Pointer.current.position.ReadValue();
-                Vector3 screenPos3D = new Vector3(screenPos.x, screenPos.y, dragZOffset);
-                Vector3 pos = _camera.ScreenToWorldPoint(screenPos3D);
+            Vector3 screenPos = Pointer.current.position.ReadValue();
+            Vector3 screenPos3D = new Vector3(screenPos.x, screenPos.y, dragZOffset);
+            Vector3 pos = _camera.ScreenToWorldPoint(screenPos3D);
         
-                transform.position = pos;
-                break;
-            case FoodState.OnCooking:
-                side[(int)currentSide].Cooking(1);
-                break;
-            default:
-                throw new ArgumentOutOfRangeException();
+            transform.position = pos;
         }
-        
+    }
+
+    public void ChangeLayer(int index)
+    {
+        gameObject.layer = index;
+    }
+    
+    public void ChangeState(FoodState newState)
+    {
+        foodState = newState;
     }
 
     public void FlipLeft()
