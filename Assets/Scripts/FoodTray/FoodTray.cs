@@ -8,8 +8,9 @@ public class FoodTray : InteractableObject
 
     public override void Interact()
     {
-        if (!GameManager.Instance.GetPlayerHandState()) return;
+        if (GameManager.Instance.GetPlayerHandState()) return;
         
-        Instantiate(foodPrefab, offsetPosition, Quaternion.Euler(offsetRotation));
+        GameObject obj = Instantiate(foodPrefab, offsetPosition, Quaternion.Euler(offsetRotation));
+        GameManager.Instance.AssignFoodToPlayer(obj);
     }
 }

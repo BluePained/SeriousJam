@@ -21,7 +21,22 @@ public class GameManager : MonoBehaviour
 
     public bool GetPlayerHandState()
     {
-        return !PlayerData.IsHandHolding; //Reverse as if true = hand is free
+        return PlayerData.IsHandHolding;
+    }
+
+    public bool AssignFoodToPlayer(GameObject food)
+    {
+        return PlayerData.AssignFoodToHand(food);
+    }
+
+    public GameObject GetFoodFromPlayer()
+    {
+        return PlayerData.FoodObject == null ? null : PlayerData.FoodObject;
+    }
+
+    public void ClearFoodFromPlayer()
+    {
+        PlayerData.ClearFoodFromPlayer();
     }
     
     private void OnDestroy()

@@ -1,11 +1,13 @@
 using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerData : MonoBehaviour
 {
     [field: SerializeField] public Transform HandPos { get; private set; }
     [field: SerializeField] public bool IsHandHolding { get; private set; }
+    [field: SerializeField] public GameObject FoodObject { get; private set; }
     [SerializeField] private Camera mainCamera;
     private Vector2 _mousePos;
     RaycastHit _hit;
@@ -13,13 +15,11 @@ public class PlayerData : MonoBehaviour
     private void OnEnable()
     {
         InputManager.InputAction.Player.Click.canceled += FiredRaycast;
-        //InputManager.InputAction.Player.Point.performed += GetMousePos;
     }
 
     private void OnDisable()
     {
         InputManager.InputAction.Player.Click.canceled -= FiredRaycast;
-        //InputManager.InputAction.Player.Point.performed -= GetMousePos;
     }
     
     private void Start()
@@ -28,11 +28,14 @@ public class PlayerData : MonoBehaviour
         mainCamera = Camera.main;    
     }
 
-   /* private void GetMousePos(InputAction.CallbackContext ctx)
+    public bool AssignFoodToHand(GameObject food)
     {
-        _mousePos = ctx.ReadValue<Vector2>();
-    }*/
-   
+        if(IsHandHolding) return false;
+        
+        IsHandHolding = true;
+        FoodObject = food;
+        return true;
+    }
 
     private void FiredRaycast(InputAction.CallbackContext context)
     {
@@ -49,8 +52,9 @@ public class PlayerData : MonoBehaviour
         }
     }
 
-    private void HoverDetect()
+    public void ClearFoodFromPlayer()
     {
-        
+        IsHandHolding = false;
+        FoodObject = null;
     }
 }
