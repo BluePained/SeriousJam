@@ -1,11 +1,10 @@
-using System;
 using UnityEngine;
 
-public class GrillManager : InteractableObject
+public class RestTray : InteractableObject
 {
-    [SerializeField] private GrillSlot[] placeObjectPoint;
+    [SerializeField] private RestTraySlot[] placeObjectPoint;
     private GameObject _food;
-
+    
 #if UNITY_EDITOR
     
     private void OnValidate()
@@ -13,22 +12,22 @@ public class GrillManager : InteractableObject
         if(Application.isPlaying) return;
         if(transform.childCount - 1 <= 0) return;
         
-        placeObjectPoint = new GrillSlot[transform.childCount - 1];
+        placeObjectPoint = new RestTraySlot[transform.childCount - 1];
 
         for (int i = 0; i < transform.childCount - 1; i++)
         {
-            placeObjectPoint[i] = transform.GetChild(i + 1).GetComponent<GrillSlot>();
+            placeObjectPoint[i] = transform.GetChild(i + 1).GetComponent<RestTraySlot>();
         }
         
         UnityEditor.EditorUtility.SetDirty(this);
     }
 #endif
-
+    
     public override void Interact()
     {
         if (!GameManager.Instance.GetPlayerHandState()) return;
         
-        foreach (GrillSlot slot in placeObjectPoint)
+        foreach (RestTraySlot slot in placeObjectPoint)
         {
             if (slot.IsUsed) continue;
 
@@ -40,7 +39,7 @@ public class GrillManager : InteractableObject
                 GameManager.Instance.ClearFoodFromPlayer();
                 
                 FoodInteractableObject food = _food.GetComponent<FoodInteractableObject>();
-                food.ChangeState(FoodState.OnCooking);
+                food.ChangeState(FoodState.OnPlaced);
                 food.ChangeLayer(LayerMask.NameToLayer("Default"));
 
                 foreach (Transform child in food.transform)
@@ -57,5 +56,4 @@ public class GrillManager : InteractableObject
         
         
     }
-    
 }
