@@ -9,6 +9,7 @@ public class PlayerData : MonoBehaviour
     [field: SerializeField] public bool IsHandHolding { get; private set; }
     [field: SerializeField] public GameObject FoodObject { get; private set; }
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private LayerMask layerMask;
     private Vector2 _mousePos;
     RaycastHit _hit;
 
@@ -44,7 +45,7 @@ public class PlayerData : MonoBehaviour
         _mousePos = Pointer.current.position.ReadValue();
         Ray ray = mainCamera.ScreenPointToRay(_mousePos);
 
-        if (!Physics.Raycast(ray, out _hit)) return;
+        if (!Physics.Raycast(ray, out _hit,100,layerMask)) return;
         
         if (_hit.collider.TryGetComponent<InteractableObject>(out var interactable))
         {
