@@ -513,6 +513,9 @@ MonoBehaviour:
   - {fileID: 673910027}
   - {fileID: 1183312532}
   - {fileID: 1996073127}
+  heatLevel: 0
+  heatLossDuration: 0
+  heatLossRate: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -774,6 +777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
+  placedFood: {fileID: 0}
 --- !u!1001 &404252859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1259,6 +1263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
+  placedFood: {fileID: 0}
 --- !u!1 &655251232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1412,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
+  placedFood: {fileID: 0}
 --- !u!1 &779668145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1643,6 +1649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
+  placedFood: {fileID: 0}
 --- !u!4 &879392871
 Transform:
   m_ObjectHideFlags: 0
@@ -2027,6 +2034,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
+  placedFood: {fileID: 0}
 --- !u!1001 &1221310646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3188,6 +3196,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
+  placedFood: {fileID: 0}
 --- !u!1 &2103561797
 GameObject:
   m_ObjectHideFlags: 0

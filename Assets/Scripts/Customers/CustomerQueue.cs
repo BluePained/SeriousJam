@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using TMPro;
 
 /// <summary>
@@ -19,8 +18,13 @@ internal sealed class CustomerQueue : MonoBehaviour
 
     private void Start()
     {
+        this.currentCustomer = Instantiate(customerPrefab);
+        this.currentCustomer.transform.position = this.customerSpawnPoint.position;
+        this.currentCustomer.SetActive(false);
+        this.currentCustomer.GetComponent<Customer>().customerQueue = this;
+        this.currentCustomer.GetComponent<Customer>().canBeUsed = true;
         queueHudText.text = $"Queue: {this.queue}";
-        Invoke(nameof(SpawnCustomer), 5f);
+        Invoke(nameof(SpawnCustomer), 3f);
     }
     internal void ManageQueue()
     {
@@ -29,13 +33,11 @@ internal sealed class CustomerQueue : MonoBehaviour
     }
     private void SpawnCustomer()
     {
-        this.currentCustomer = Instantiate(customerPrefab);
-        this.currentCustomer.transform.position = this.customerSpawnPoint.position;
-        this.currentCustomer.GetComponent<Customer>().customerQueue = this;
+        this.currentCustomer.SetActive(true);
     }
     internal void RemoveCustomer()
     {
-        Destroy(this.currentCustomer);
+        this.currentCustomer.SetActive(false);
         this.queue--;
         Invoke(nameof(ManageQueue), Random.Range(this.timeBetweenCustomers.x, this.timeBetweenCustomers.y));
         this.queueHudText.text = $"Queue: {this.queue}";
