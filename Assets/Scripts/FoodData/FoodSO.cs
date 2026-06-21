@@ -9,6 +9,7 @@ public class FoodSO : ScriptableObject
 {
     [field: SerializeField] public string FoodName { get; private set; }
     [field: SerializeField] public FoodSide[] Side { get; private set; }
+    [field: SerializeField] public float CookTime { get; private set; }
 
 #if UNITY_EDITOR
     private void OnValidate()

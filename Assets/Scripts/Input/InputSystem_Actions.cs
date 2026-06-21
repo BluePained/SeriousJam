@@ -102,10 +102,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""RightClick"",
-                    ""type"": ""PassThrough"",
+                    ""name"": ""FlipRight"",
+                    ""type"": ""Button"",
                     ""id"": ""54e3e16c-06b6-4fc6-ba67-9add6032e341"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlipLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""fc762047-3c3f-40ca-95a0-4a8cff788e38"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlipOver"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd4c74ea-5a97-4359-b0d2-535ec5a53317"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -341,7 +359,51 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""RightClick"",
+                    ""action"": ""FlipRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b25daba-80a1-41c0-b313-3cfa6625a49e"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""307c506e-fd7f-4022-911c-300fde0ec8ad"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aadd3e28-3a79-4683-bc3a-4609868b7b42"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""FlipOver"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2cc39eda-cd60-44bc-8a78-60715e6c7c80"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipOver"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1260,7 +1322,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_RightClick = m_Player.FindAction("RightClick", throwIfNotFound: true);
+        m_Player_FlipRight = m_Player.FindAction("FlipRight", throwIfNotFound: true);
+        m_Player_FlipLeft = m_Player.FindAction("FlipLeft", throwIfNotFound: true);
+        m_Player_FlipOver = m_Player.FindAction("FlipOver", throwIfNotFound: true);
         m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
         m_Player_Point = m_Player.FindAction("Point", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
@@ -1365,7 +1429,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_RightClick;
+    private readonly InputAction m_Player_FlipRight;
+    private readonly InputAction m_Player_FlipLeft;
+    private readonly InputAction m_Player_FlipOver;
     private readonly InputAction m_Player_Click;
     private readonly InputAction m_Player_Point;
     private readonly InputAction m_Player_Look;
@@ -1392,9 +1458,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Move => m_Wrapper.m_Player_Move;
         /// <summary>
-        /// Provides access to the underlying input action "Player/RightClick".
+        /// Provides access to the underlying input action "Player/FlipRight".
         /// </summary>
-        public InputAction @RightClick => m_Wrapper.m_Player_RightClick;
+        public InputAction @FlipRight => m_Wrapper.m_Player_FlipRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/FlipLeft".
+        /// </summary>
+        public InputAction @FlipLeft => m_Wrapper.m_Player_FlipLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/FlipOver".
+        /// </summary>
+        public InputAction @FlipOver => m_Wrapper.m_Player_FlipOver;
         /// <summary>
         /// Provides access to the underlying input action "Player/Click".
         /// </summary>
@@ -1464,9 +1538,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @RightClick.started += instance.OnRightClick;
-            @RightClick.performed += instance.OnRightClick;
-            @RightClick.canceled += instance.OnRightClick;
+            @FlipRight.started += instance.OnFlipRight;
+            @FlipRight.performed += instance.OnFlipRight;
+            @FlipRight.canceled += instance.OnFlipRight;
+            @FlipLeft.started += instance.OnFlipLeft;
+            @FlipLeft.performed += instance.OnFlipLeft;
+            @FlipLeft.canceled += instance.OnFlipLeft;
+            @FlipOver.started += instance.OnFlipOver;
+            @FlipOver.performed += instance.OnFlipOver;
+            @FlipOver.canceled += instance.OnFlipOver;
             @Click.started += instance.OnClick;
             @Click.performed += instance.OnClick;
             @Click.canceled += instance.OnClick;
@@ -1511,9 +1591,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @RightClick.started -= instance.OnRightClick;
-            @RightClick.performed -= instance.OnRightClick;
-            @RightClick.canceled -= instance.OnRightClick;
+            @FlipRight.started -= instance.OnFlipRight;
+            @FlipRight.performed -= instance.OnFlipRight;
+            @FlipRight.canceled -= instance.OnFlipRight;
+            @FlipLeft.started -= instance.OnFlipLeft;
+            @FlipLeft.performed -= instance.OnFlipLeft;
+            @FlipLeft.canceled -= instance.OnFlipLeft;
+            @FlipOver.started -= instance.OnFlipOver;
+            @FlipOver.performed -= instance.OnFlipOver;
+            @FlipOver.canceled -= instance.OnFlipOver;
             @Click.started -= instance.OnClick;
             @Click.performed -= instance.OnClick;
             @Click.canceled -= instance.OnClick;
@@ -1852,12 +1938,26 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "RightClick" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "FlipRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnRightClick(InputAction.CallbackContext context);
+        void OnFlipRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "FlipLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFlipLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "FlipOver" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFlipOver(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Click" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

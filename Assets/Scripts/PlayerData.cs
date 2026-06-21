@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     [field: SerializeField] public Transform HandPos { get; private set; }
     [field: SerializeField] public bool IsHandHolding { get; private set; }
-    [field: SerializeField] public GameObject FoodObject { get; private set; }
+    [field: SerializeField] public FoodInteractableObject FoodObject { get; private set; }
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
     private Vector2 _mousePos;
@@ -16,11 +16,17 @@ public class PlayerData : MonoBehaviour
     private void OnEnable()
     {
         InputManager.InputAction.Player.Click.canceled += FiredRaycast;
+        InputManager.InputAction.Player.FlipLeft.canceled += Flip;
+        InputManager.InputAction.Player.FlipRight.canceled += Flip;
+        InputManager.InputAction.Player.FlipOver.canceled += Flip;
     }
 
     private void OnDisable()
     {
         InputManager.InputAction.Player.Click.canceled -= FiredRaycast;
+        InputManager.InputAction.Player.FlipLeft.canceled -= Flip;
+        InputManager.InputAction.Player.FlipRight.canceled -= Flip;
+        InputManager.InputAction.Player.FlipOver.canceled -= Flip;
     }
     
     private void Start()
@@ -29,7 +35,7 @@ public class PlayerData : MonoBehaviour
         mainCamera = Camera.main;    
     }
 
-    public bool AssignFoodToHand(GameObject food)
+    public bool AssignFoodToHand(FoodInteractableObject food)
     {
         if(IsHandHolding) return false;
         
@@ -57,5 +63,10 @@ public class PlayerData : MonoBehaviour
     {
         IsHandHolding = false;
         FoodObject = null;
+    }
+
+    private void Flip(InputAction.CallbackContext context)
+    {
+        FoodObject?.Flip(context.action.name);
     }
 }

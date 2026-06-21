@@ -3,7 +3,7 @@ using UnityEngine;
 public class RestTray : InteractableObject
 {
     [SerializeField] private RestTraySlot[] placeObjectPoint;
-    private GameObject _food;
+    private FoodInteractableObject _food;
     
 #if UNITY_EDITOR
     
@@ -38,13 +38,12 @@ public class RestTray : InteractableObject
                 slot.ChangeUsedState(true);
                 GameManager.Instance.ClearFoodFromPlayer();
                 
-                FoodInteractableObject food = _food.GetComponent<FoodInteractableObject>();
-                food.ChangeState(FoodState.OnPlaced);
-                food.ChangeLayer(LayerMask.NameToLayer("Default"));
-                food.AssignSlot(slot);
+                _food.ChangeState(FoodState.OnPlaced);
+                _food.ChangeLayer(LayerMask.NameToLayer("Default"));
+                _food.AssignSlot(slot);
                 
-                food.transform.position = slot.transform.position;
-                food.transform.rotation = slot.transform.parent.localRotation;
+                _food.gameObject.transform.position = slot.transform.position;
+                _food.gameObject.transform.rotation = slot.transform.parent.localRotation;
                 _food = null;
                 break;
             }

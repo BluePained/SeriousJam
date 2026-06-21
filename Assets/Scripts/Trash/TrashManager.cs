@@ -6,7 +6,7 @@ public class TrashManager : InteractableObject
     {
         if (!GameManager.Instance.GetPlayerHandState()) return;
 
-        GameObject obj = GameManager.Instance.GetFoodFromPlayer();
+        GameObject obj = GameManager.Instance.GetFoodFromPlayer().gameObject;
         Destroy(obj);
         GameManager.Instance.ClearFoodFromPlayer();
         

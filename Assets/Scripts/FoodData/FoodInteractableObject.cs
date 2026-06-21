@@ -32,7 +32,6 @@ public class FoodSide
     [SerializeField] private Side side;
     [SerializeField] private Cookedness cookedness;
     [Range(0,115)] [SerializeField] private float cookednessValue;
-    private bool _isBurned;
     private const float DEFAULT_COOK_VALUE = 0;
     private const float MAX_COOK_VALUE = 115;
     
@@ -43,7 +42,7 @@ public class FoodSide
 
     public void Cooking(float value)
     {
-        if (_isBurned) return;
+        if (cookedness == Cookedness.Burnt) return;
         
         cookednessValue += value;
         
@@ -56,22 +55,20 @@ public class FoodSide
             <= 50 => Cookedness.Undercooked,
             <= 75 => Cookedness.Cooked,
             <= 100 => Cookedness.Overcooked,
-            >= 115 => Cookedness.Burnt,
+            >= MAX_COOK_VALUE => Cookedness.Burnt,
             _ => cookedness
         };
-        
-        if(cookedness == Cookedness.Burnt) _isBurned = true;
+
     }
     
     public void DefaultValue()
     {
         cookednessValue = DEFAULT_COOK_VALUE;
         cookedness = Cookedness.Raw;
-        _isBurned = false;
     }
 }
 
-public class FoodInteractableObject : InteractableObject
+public class FoodInteractableObject : InteractableObject, IFlippable
 {
     [SerializeField] private FoodState foodState;
     [SerializeField] private FoodSide[] side;
@@ -80,9 +77,13 @@ public class FoodInteractableObject : InteractableObject
     [SerializeField] private float dragZOffset;
     [SerializeField] private Vector3 pickUpRotation = new Vector3(60,0,0);
     
+    public Side CurrentSide => currentSide;
+
+    private FoodVisualHandler _foodVisualHandler; 
     private PlaceSlot _slot;
-    
     private Camera _camera;
+    
+    public event Action<Side> NotifyFlipping;
     
     private void Awake()
     {
@@ -95,7 +96,10 @@ public class FoodInteractableObject : InteractableObject
 
     private void Start()
     {
+        _foodVisualHandler = gameObject.transform.GetComponentInChildren<FoodVisualHandler>();
         _camera = Camera.main;
+        
+        if(_foodVisualHandler == null) print("Food Visual is null");
     }
 
     private void Update()
@@ -189,7 +193,8 @@ public class FoodInteractableObject : InteractableObject
 
     private void PickUp()
     {
-        GameManager.Instance.AssignFoodToPlayer(this.gameObject);
+        if (GameManager.Instance.PlayerData.IsHandHolding) return;
+        GameManager.Instance.AssignFoodToPlayer(this);
         transform.localRotation = Quaternion.Euler(pickUpRotation);
         _slot?.ChangeUsedState(false);
         _slot = null;
@@ -201,5 +206,22 @@ public class FoodInteractableObject : InteractableObject
     {
         _slot = slot;
     }
-    
+
+    public void Flip(string flipName)
+    {
+        switch (flipName)
+        {
+            case "FlipLeft":
+                FlipLeft();
+                break;
+            case "FlipRight":
+                FlipRight();
+                break;
+            case "FlipOver":
+                FlipOver();
+                break;
+        }
+
+        NotifyFlipping?.Invoke(currentSide);
+    }
 }
