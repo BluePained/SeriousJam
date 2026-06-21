@@ -10,20 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b92b0616aa05f2489f6c93086fb0200, type: 3}
-  m_Name: TestFood
+  m_Name: 2SideTestFood
   m_EditorClassIdentifier: Assembly-CSharp::FoodSO
   <FoodName>k__BackingField: Smt idk
   <Side>k__BackingField:
   - side: 0
     cookedness: 0
     cookednessValue: 0
-  - side: 1
-    cookedness: 0
-    cookednessValue: 0
-  - side: 2
-    cookedness: 0
-    cookednessValue: 0
   - side: 3
     cookedness: 0
     cookednessValue: 0
-  <CookTime>k__BackingField: 1
+  <CookTime>k__BackingField: 0.3
