@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &66031108
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 66031109}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &66031109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66031108}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: -0.75}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &136779355
 GameObject:
   m_ObjectHideFlags: 0
@@ -298,7 +267,7 @@ GameObject:
   - component: {fileID: 205303475}
   - component: {fileID: 205303474}
   m_Layer: 0
-  m_Name: Reserve for smt idk
+  m_Name: Cube_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 205303473}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13052714, y: -0, z: -0, w: 0.99144477}
-  m_LocalPosition: {x: 0.2852, y: 0.55060005, z: -0.8402}
+  m_LocalPosition: {x: 0.2852, y: 0.5076, z: -0.8402}
   m_LocalScale: {x: 0.1777241, y: 0.053498458, z: 0.2308721}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -436,7 +405,7 @@ Transform:
   m_GameObject: {fileID: 284286270}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0.474, y: 0.569, z: -0.802}
+  m_LocalPosition: {x: 0.474, y: 0.526, z: -0.802}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -512,7 +481,7 @@ Transform:
   m_GameObject: {fileID: 301976267}
   serializedVersion: 2
   m_LocalRotation: {x: -0.25881976, y: -0, z: -0, w: 0.9659257}
-  m_LocalPosition: {x: 0, y: 0.547, z: -0.785}
+  m_LocalPosition: {x: 0, y: 0.494, z: -0.785}
   m_LocalScale: {x: 0.35504416, y: 0.053498458, z: 0.20221663}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -544,7 +513,6 @@ MonoBehaviour:
   - {fileID: 673910027}
   - {fileID: 1183312532}
   - {fileID: 1996073127}
-  heatLevel: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,12 +600,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1305262, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 1.0235238, z: -1.9574072}
+  m_LocalRotation: {x: 0.13052596, y: 0, z: 0, w: 0.99144495}
+  m_LocalPosition: {x: 0, y: 1.029, z: -1.899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1493939429}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 5.5, y: 0, z: 0}
 --- !u!114 &330585547
@@ -807,7 +774,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
-  placedFood: {fileID: 0}
 --- !u!1001 &404252859
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -826,7 +792,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.638
+      value: 0.605
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -863,7 +829,7 @@ PrefabInstance:
     - target: {fileID: 4351881841809153356, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: foodPrefab
       value: 
-      objectReference: {fileID: 2753595497720470629, guid: 05e3c388d21fe5444819c5e6ab4e1be5, type: 3}
+      objectReference: {fileID: 2753595497720470629, guid: ab4da08beae591847bf786a53fe9ffc9, type: 3}
     - target: {fileID: 4351881841809153356, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: offsetPosition.x
       value: -0.4081
@@ -1088,7 +1054,7 @@ Transform:
   m_GameObject: {fileID: 414042677}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: -0.4075, y: 0.6217, z: -0.6439}
+  m_LocalPosition: {x: -0.4075, y: 0.5887, z: -0.6439}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1293,7 +1259,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
-  placedFood: {fileID: 0}
 --- !u!1 &673910025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,7 +1304,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
-  placedFood: {fileID: 0}
 --- !u!1 &779668145
 GameObject:
   m_ObjectHideFlags: 0
@@ -1353,7 +1317,7 @@ GameObject:
   - component: {fileID: 779668147}
   - component: {fileID: 779668146}
   m_Layer: 0
-  m_Name: CounterLeft
+  m_Name: Cube_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1446,7 +1410,7 @@ Transform:
   m_GameObject: {fileID: 779668145}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13052714, y: -0, z: -0, w: 0.99144477}
-  m_LocalPosition: {x: -0.555, y: 0.537, z: -0.855}
+  m_LocalPosition: {x: -0.555, y: 0.494, z: -0.855}
   m_LocalScale: {x: 0.7563546, y: 0.053498458, z: 0.32878214}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1576,7 +1540,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
-  placedFood: {fileID: 0}
 --- !u!4 &879392871
 Transform:
   m_ObjectHideFlags: 0
@@ -1602,9 +1565,6 @@ GameObject:
   m_Component:
   - component: {fileID: 909654061}
   - component: {fileID: 909654060}
-  - component: {fileID: 909654064}
-  - component: {fileID: 909654063}
-  - component: {fileID: 909654062}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -1634,7 +1594,7 @@ MonoBehaviour:
   Target:
     TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
-    CustomLookAtTarget: 1
+    CustomLookAtTarget: 0
   Lens:
     FieldOfView: 30
     OrthographicSize: 5
@@ -1663,101 +1623,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909654059}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1305262, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 1.0235238, z: -1.9574072}
+  m_LocalRotation: {x: 0.13052596, y: -0, z: -0, w: 0.99144495}
+  m_LocalPosition: {x: 0, y: 1.029, z: -1.899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!114 &909654062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909654059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7dfcc60eb7273e47aa3f452dfe350bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: CustomCinemachine::CustomCinemachine.CinemachineAxisController
-  inputAxisController: {fileID: 909654063}
---- !u!114 &909654063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909654059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89875cdc57c54474a8a74efd9b2a3b5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineInputAxisController
-  ScanRecursively: 1
-  SuppressInputWhileBlending: 1
-  IgnoreTimeScale: 0
-  m_ControllerManager:
-    Controllers:
-    - Name: Look X (Pan)
-      Owner: {fileID: 909654064}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
-        Gain: 1
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0.2
-        DecelTime: 0.2
-    - Name: Look Y (Tilt)
-      Owner: {fileID: 909654064}
-      Enabled: 1
-      Input:
-        InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
-        Gain: -1
-        CancelDeltaTime: 0
-      InputValue: 0
-      Driver:
-        AccelTime: 0.2
-        DecelTime: 0.2
-  PlayerIndex: -1
-  AutoEnableInputs: 1
---- !u!114 &909654064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 909654059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62d54399b04b4fa48a73e121d4937dd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePanTilt
-  ReferenceFrame: 1
-  RecenterTarget: 0
-  PanAxis:
-    Value: 0
-    Center: 0
-    Range: {x: 0, y: 0}
-    Wrap: 0
-    Recentering:
-      Enabled: 0
-      Wait: 1
-      Time: 2
-    Restrictions: 0
-  TiltAxis:
-    Value: 15
-    Center: 15
-    Range: {x: 5, y: 20}
-    Wrap: 0
-    Recentering:
-      Enabled: 0
-      Wait: 1
-      Time: 2
-    Restrictions: 0
 --- !u!1 &1131306285
 GameObject:
   m_ObjectHideFlags: 0
@@ -1771,7 +1643,7 @@ GameObject:
   - component: {fileID: 1131306287}
   - component: {fileID: 1131306286}
   m_Layer: 0
-  m_Name: CounterUpper
+  m_Name: Cube_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1864,7 +1736,7 @@ Transform:
   m_GameObject: {fileID: 1131306285}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13052714, y: -0, z: -0, w: 0.99144477}
-  m_LocalPosition: {x: 0, y: 0.618, z: -0.64}
+  m_LocalPosition: {x: 0, y: 0.585, z: -0.64}
   m_LocalScale: {x: 2.2869468, y: 0.053498458, z: 0.16545303}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1915,7 +1787,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
-  placedFood: {fileID: 0}
 --- !u!1001 &1221310646
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1934,7 +1805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.638
+      value: 0.605
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2034,7 +1905,7 @@ GameObject:
   - component: {fileID: 1370965576}
   - component: {fileID: 1370965575}
   m_Layer: 0
-  m_Name: CounterRight
+  m_Name: Cube_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2127,7 +1998,7 @@ Transform:
   m_GameObject: {fileID: 1370965574}
   serializedVersion: 2
   m_LocalRotation: {x: -0.13052714, y: -0, z: -0, w: 0.99144477}
-  m_LocalPosition: {x: 0.555, y: 0.537, z: -0.855}
+  m_LocalPosition: {x: 0.555, y: 0.494, z: -0.855}
   m_LocalScale: {x: 0.7563546, y: 0.053498458, z: 0.32878214}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2344,12 +2215,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1493939425}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.13052596, y: 0, z: 0, w: 0.99144495}
+  m_LocalPosition: {x: 0, y: 1.029, z: -1.899}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 330585546}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1494861387
 PrefabInstance:
@@ -2369,7 +2240,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.638
+      value: 0.605
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2564,7 +2435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.638
+      value: 0.605
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2790,7 +2661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.638
+      value: 0.605
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2967,7 +2838,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrillSlot
   <IsUsed>k__BackingField: 0
-  placedFood: {fileID: 0}
 --- !u!1001 &733274993839023288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2986,7 +2856,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.638
+      value: 0.605
       objectReference: {fileID: 0}
     - target: {fileID: 3077690716503609580, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3070,6 +2940,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 141635943}
+  - {fileID: 1493939429}
   - {fileID: 330585546}
   - {fileID: 909654061}
   - {fileID: 410087041}
@@ -3089,4 +2960,3 @@ SceneRoots:
   - {fileID: 284286272}
   - {fileID: 414042680}
   - {fileID: 205303477}
-  - {fileID: 66031109}

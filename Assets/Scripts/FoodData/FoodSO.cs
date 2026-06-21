@@ -15,14 +15,11 @@ public class FoodSO : ScriptableObject
     private void OnValidate()
     {
         if(Application.isPlaying) return;
-
-        if (Side.Length == 4)
+        
+        for (int i = 0; i < Side.Length; i++)
         {
-            for (int i = 0; i < Side.Length; i++)
-            {
-                Side[i].ChangeSide((Side)i);
-                Side[i].DefaultValue();
-            }
+            Side[i].ChangeSide((Side)i);
+            Side[i].DefaultValue();
         }
         
         EditorUtility.SetDirty(this);

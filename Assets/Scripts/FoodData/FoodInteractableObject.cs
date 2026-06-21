@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,16 +34,6 @@ public class FoodSide
     [Range(0,115)] [SerializeField] private float cookednessValue;
     private const float DEFAULT_COOK_VALUE = 0;
     private const float MAX_COOK_VALUE = 115;
-
-    public Side GetSide()
-    {
-        return side;
-    }
-    
-    public FoodSide(Side foodSide)
-    {
-        side = foodSide;
-    }
     
     public void ChangeSide(Side changeSide)
     {
@@ -90,11 +79,9 @@ public class FoodInteractableObject : InteractableObject, IFlippable
     
     public Side CurrentSide => currentSide;
 
-    private Dictionary<Side, FoodSide> _sideMap;
     private FoodVisualHandler _foodVisualHandler; 
     private PlaceSlot _slot;
     private Camera _camera;
-    private float _timer;
     
     public event Action<Side> NotifyFlipping;
     
@@ -102,15 +89,7 @@ public class FoodInteractableObject : InteractableObject, IFlippable
     {
         if (foodData == null) return;
         
-        //side = foodData.Side;
-        
-        side = new FoodSide[foodData.Side.Length];
-        _sideMap = new Dictionary<Side, FoodSide>();
-        for (int i = 0; i < side.Length; i++)
-        {
-            side[i] = new FoodSide(foodData.Side[i].GetSide());
-            _sideMap[side[i].GetSide()] = side[i];
-        }
+        side = foodData.Side;
         currentSide = Side.Up;
         transform.localRotation = Quaternion.Euler(pickUpRotation);
     }
@@ -218,12 +197,6 @@ public class FoodInteractableObject : InteractableObject, IFlippable
         GameManager.Instance.AssignFoodToPlayer(this);
         transform.localRotation = Quaternion.Euler(pickUpRotation);
         _slot?.ChangeUsedState(false);
-
-        if (_slot is GrillSlot grillSlot)
-        {
-            grillSlot.RemoveFood();
-        }
-        
         _slot = null;
         foodState = FoodState.OnDrag;
         ChangeLayer(6);
@@ -250,17 +223,5 @@ public class FoodInteractableObject : InteractableObject, IFlippable
         }
 
         NotifyFlipping?.Invoke(currentSide);
-    }
-
-    public void CookFood(float heat)
-    {
-        _timer += Time.deltaTime;
-        if (_timer >= foodData.CookTime)
-        {
-            if (_sideMap.TryGetValue(currentSide, out FoodSide currentFoodSide))
-                currentFoodSide.Cooking(heat);
-            
-            _timer = 0;
-        }
     }
 }
