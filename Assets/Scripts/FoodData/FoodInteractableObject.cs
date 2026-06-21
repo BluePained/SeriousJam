@@ -16,7 +16,7 @@ public enum Cookedness
     Undercooked,
     Cooked,
     Overcooked,
-    Burned
+    Burnt
 }
 
 public enum FoodState
@@ -56,11 +56,11 @@ public class FoodSide
             <= 50 => Cookedness.Undercooked,
             <= 75 => Cookedness.Cooked,
             <= 100 => Cookedness.Overcooked,
-            >= 115 => Cookedness.Burned,
+            >= 115 => Cookedness.Burnt,
             _ => cookedness
         };
         
-        if(cookedness == Cookedness.Burned) _isBurned = true;
+        if(cookedness == Cookedness.Burnt) _isBurned = true;
     }
     
     public void DefaultValue()
@@ -78,6 +78,9 @@ public class FoodInteractableObject : InteractableObject
     [SerializeField] private FoodSO foodData;
     [SerializeField] private Side currentSide;
     [SerializeField] private float dragZOffset;
+    [SerializeField] private Vector3 pickUpRotation = new Vector3(60,0,0);
+    
+    private PlaceSlot _slot;
     
     private Camera _camera;
     
@@ -87,8 +90,7 @@ public class FoodInteractableObject : InteractableObject
         
         side = foodData.Side;
         currentSide = Side.Up;
-
-        
+        transform.localRotation = Quaternion.Euler(pickUpRotation);
     }
 
     private void Start()
@@ -106,11 +108,17 @@ public class FoodInteractableObject : InteractableObject
         
             transform.position = pos;
         }
+        
     }
 
     public void ChangeLayer(int index)
     {
         gameObject.layer = index;
+
+        foreach (Transform child in gameObject.transform)
+        {
+            child.gameObject.layer = index;
+        }
     }
     
     public void ChangeState(FoodState newState)
@@ -164,6 +172,34 @@ public class FoodInteractableObject : InteractableObject
             Side.Right => Side.Left,
             _ => currentSide
         };
+    }
+
+    public override void Interact()
+    {
+        switch (foodState)
+        {
+            case FoodState.OnCooking:
+            case FoodState.OnPlaced:
+                PickUp();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void PickUp()
+    {
+        GameManager.Instance.AssignFoodToPlayer(this.gameObject);
+        transform.localRotation = Quaternion.Euler(pickUpRotation);
+        _slot?.ChangeUsedState(false);
+        _slot = null;
+        foodState = FoodState.OnDrag;
+        ChangeLayer(6);
+    }
+
+    public void AssignSlot(PlaceSlot slot)
+    {
+        _slot = slot;
     }
     
 }

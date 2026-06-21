@@ -1,11 +1,6 @@
 using UnityEngine;
 
-public class GrillSlot : MonoBehaviour
+public class GrillSlot : PlaceSlot
 {
-    [field: SerializeField] public bool IsUsed { get; private set; }
-
-    public void ChangeUsedState(bool state)
-    {
-        IsUsed = state;
-    }
+    
 }

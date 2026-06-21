@@ -42,11 +42,7 @@ public class GrillManager : InteractableObject
                 FoodInteractableObject food = _food.GetComponent<FoodInteractableObject>();
                 food.ChangeState(FoodState.OnCooking);
                 food.ChangeLayer(LayerMask.NameToLayer("Default"));
-
-                foreach (Transform child in food.transform)
-                {
-                    child.gameObject.layer = LayerMask.NameToLayer("Default");
-                }
+                food.AssignSlot(slot);
                 
                 food.transform.position = slot.transform.position;
                 food.transform.rotation = slot.transform.parent.localRotation;

@@ -138,14 +138,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2753595497720470629}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.2588186, y: -0, z: -0, w: 0.965926}
+  m_LocalRotation: {x: -0.5, y: 0, z: 0, w: 0.8660254}
   m_LocalPosition: {x: -0.13, y: 0.529, z: -0.8175}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4437630703493190579}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
 --- !u!114 &4956939759172564986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,7 +174,8 @@ MonoBehaviour:
     cookednessValue: 0
   foodData: {fileID: 11400000, guid: d1e0761e28184c442be5df6176665972, type: 2}
   currentSide: 0
-  dragZOffset: 1.25
+  dragZOffset: 1
+  pickUpRotation: {x: -60, y: 0, z: 0}
 --- !u!65 &2447436602650922610
 BoxCollider:
   m_ObjectHideFlags: 0
