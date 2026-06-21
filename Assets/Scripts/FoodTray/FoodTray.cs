@@ -9,6 +9,6 @@ public class FoodTray : InteractableObject
         if (GameManager.Instance.GetPlayerHandState()) return;
         
         GameObject obj = Instantiate(foodPrefab);
-        GameManager.Instance.AssignFoodToPlayer(obj);
+        GameManager.Instance.AssignFoodToPlayer(obj.GetComponent<FoodInteractableObject>());
     }
 }

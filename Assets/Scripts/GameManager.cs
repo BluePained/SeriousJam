@@ -24,12 +24,12 @@ public class GameManager : MonoBehaviour
         return PlayerData.IsHandHolding;
     }
 
-    public bool AssignFoodToPlayer(GameObject food)
+    public bool AssignFoodToPlayer(FoodInteractableObject food)
     {
         return PlayerData.AssignFoodToHand(food);
     }
 
-    public GameObject GetFoodFromPlayer()
+    public FoodInteractableObject GetFoodFromPlayer()
     {
         return PlayerData.FoodObject == null ? null : PlayerData.FoodObject;
     }

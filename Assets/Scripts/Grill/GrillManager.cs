@@ -4,7 +4,7 @@ using UnityEngine;
 public class GrillManager : InteractableObject
 {
     [SerializeField] private GrillSlot[] placeObjectPoint;
-    private GameObject _food;
+    private FoodInteractableObject _food;
 
 #if UNITY_EDITOR
     
@@ -39,13 +39,12 @@ public class GrillManager : InteractableObject
                 slot.ChangeUsedState(true);
                 GameManager.Instance.ClearFoodFromPlayer();
                 
-                FoodInteractableObject food = _food.GetComponent<FoodInteractableObject>();
-                food.ChangeState(FoodState.OnCooking);
-                food.ChangeLayer(LayerMask.NameToLayer("Default"));
-                food.AssignSlot(slot);
+                _food.ChangeState(FoodState.OnCooking);
+                _food.ChangeLayer(LayerMask.NameToLayer("Default"));
+                _food.AssignSlot(slot);
                 
-                food.transform.position = slot.transform.position;
-                food.transform.rotation = slot.transform.parent.localRotation;
+                _food.gameObject.transform.position = slot.transform.position;
+                _food.gameObject.transform.rotation = slot.transform.parent.localRotation;
                 _food = null;
                 break;
             }
