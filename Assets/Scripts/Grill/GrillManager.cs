@@ -1,11 +1,16 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GrillManager : InteractableObject
 {
     [SerializeField] private GrillSlot[] placeObjectPoint;
     [Range(0,5)] [SerializeField] private float heatLevel;
+    [SerializeField] private float heatLossDuration;
+    [SerializeField] private float heatLossRate = 1;
     private FoodInteractableObject _food;
+    private float _heatCooldown;
+    private float _heatCooldownRate;
 
 #if UNITY_EDITOR
     
@@ -52,17 +57,53 @@ public class GrillManager : InteractableObject
             }
         }
     }
+    
 
+    public void HeatUp(float heatAmplify)
+    {
+        float rounded = Mathf.Floor(heatAmplify * 100)/100;
+        heatLevel += rounded;
+        if (heatLevel > 5)
+        {
+            heatLevel = 5;
+        }
+        
+        ResetCooldownTimer();
+    }
+
+    private void ResetCooldownTimer()
+    {
+        _heatCooldown = heatLossDuration;
+    }
+    
     private void Update()
     {
-        if (heatLevel > 0)
+        _heatCooldown -= Time.deltaTime;
+        
+        if (_heatCooldown <= 0 && heatLevel > 0)
         {
-            foreach (var grillSlot in placeObjectPoint)
+            _heatCooldownRate += Time.deltaTime;
+
+            if (_heatCooldownRate >= heatLossRate)
             {
-                if (grillSlot.IsUsed)
-                {
-                    grillSlot.CookTheFood(heatLevel);
-                }
+                float heatLevelLost = Random.Range(0.1f, 0.3f);
+                float rounded = Mathf.Floor(heatLevelLost * 100) / 100;
+                heatLevel -= rounded;
+                _heatCooldownRate = 0;
+                
+                if (heatLevel < 0)
+                    heatLevel = 0;
+            }
+            
+        }
+        
+        if(heatLevel <= 0) return;
+        
+        foreach (var grillSlot in placeObjectPoint)
+        { 
+            if (grillSlot.IsUsed)
+            { 
+                grillSlot.CookTheFood(heatLevel);
             }
         }
         
