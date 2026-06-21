@@ -5,14 +5,25 @@ using UnityEngine;
 /// </summary>
 internal sealed class Customer : MonoBehaviour
 {
-    internal CustomerQueue customerQueue;
+    [SerializeField] private Vector2 waitingTimeInterval = new Vector2(3f, 4f);
 
-    private void Start()
+    internal CustomerQueue customerQueue;
+    internal bool canBeUsed = false;
+    private float waitingTime = default;
+
+    private void OnEnable()
     {
-        Invoke(nameof(FoodServed), 1f);
+        if (!this.canBeUsed) return;
+        this.waitingTime = Random.Range(waitingTimeInterval.x, waitingTimeInterval.y);
+        Invoke(nameof(WaitingTimeEnded), waitingTime);
     }
     private void FoodServed()
     {
         customerQueue.RemoveCustomer();
+    }
+    private void WaitingTimeEnded()
+    {
+        customerQueue.RemoveCustomer();
+        Debug.Log("Customer angy and left noob");
     }
 }
