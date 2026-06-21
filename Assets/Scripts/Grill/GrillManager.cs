@@ -4,6 +4,7 @@ using UnityEngine;
 public class GrillManager : InteractableObject
 {
     [SerializeField] private GrillSlot[] placeObjectPoint;
+    [Range(0,5)] [SerializeField] private float heatLevel;
     private FoodInteractableObject _food;
 
 #if UNITY_EDITOR
@@ -37,6 +38,7 @@ public class GrillManager : InteractableObject
             if (_food != null)
             {
                 slot.ChangeUsedState(true);
+                slot.AssignFood(_food);
                 GameManager.Instance.ClearFoodFromPlayer();
                 
                 _food.ChangeState(FoodState.OnCooking);
@@ -49,8 +51,20 @@ public class GrillManager : InteractableObject
                 break;
             }
         }
-        
+    }
+
+    private void Update()
+    {
+        if (heatLevel > 0)
+        {
+            foreach (var grillSlot in placeObjectPoint)
+            {
+                if (grillSlot.IsUsed)
+                {
+                    grillSlot.CookTheFood(heatLevel);
+                }
+            }
+        }
         
     }
-    
 }
