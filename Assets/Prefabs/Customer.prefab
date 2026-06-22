@@ -127,3 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6afd06126e3114889108972e7cebff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
+  foods:
+  - {fileID: 11400000, guid: d1e0761e28184c442be5df6176665972, type: 2}
+  - {fileID: 11400000, guid: c9489b65f01529048b3fd9f055952eac, type: 2}
+  waitingTimeInterval: {x: 3, y: 4}
