@@ -8,6 +8,7 @@ using UnityEditor;
 public class FoodSO : ScriptableObject
 {
     [field: SerializeField] public string FoodName { get; private set; }
+    [field: SerializeField] public Material FoodSprite { get; private set; }
     [field: SerializeField] public FoodSide[] Side { get; private set; }
     [field: SerializeField] public float CookTime { get; private set; }
 
