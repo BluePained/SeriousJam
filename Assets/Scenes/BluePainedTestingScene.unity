@@ -2475,7 +2475,7 @@ PrefabInstance:
     - target: {fileID: 4351881841809153356, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: foodPrefab
       value: 
-      objectReference: {fileID: 2753595497720470629, guid: ab4da08beae591847bf786a53fe9ffc9, type: 3}
+      objectReference: {fileID: 2753595497720470629, guid: acaf2209805066745a5bfdeb7f72798f, type: 3}
     - target: {fileID: 4351881841809153356, guid: 91613ca4483022b40a26a936e503d8c1, type: 3}
       propertyPath: offsetPosition.x
       value: -0.4081
