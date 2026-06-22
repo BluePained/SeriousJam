@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 2SideTestFood
   m_EditorClassIdentifier: Assembly-CSharp::FoodSO
   <FoodName>k__BackingField: Smt idk
+  <FoodSprite>k__BackingField: {fileID: 2100000, guid: 1f3d03c54eb3fe1458fdb5ecdd0e7a57, type: 2}
   <Side>k__BackingField:
   - side: 0
     cookedness: 0
