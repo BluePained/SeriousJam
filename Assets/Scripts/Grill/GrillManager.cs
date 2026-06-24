@@ -8,6 +8,7 @@ public class GrillManager : InteractableObject
     [Range(0,5)] [SerializeField] private float heatLevel;
     [SerializeField] private float heatLossDuration;
     [SerializeField] private float heatLossRate = 1;
+    public float HeatLevel => heatLevel;
     private FoodInteractableObject _food;
     private float _heatCooldown;
     private float _heatCooldownRate;
