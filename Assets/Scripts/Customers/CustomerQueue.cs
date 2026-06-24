@@ -38,7 +38,11 @@ internal sealed class CustomerQueue : MonoBehaviour
     internal void ManageQueue()
     {
         if (this.queue == 0)
+        {
+            if (this.GetActiveCustomerCount() == 0)
+                GameManager.Instance.EndGame();
             return;
+        }
         SpawnCustomer();
         queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
     }
@@ -59,8 +63,7 @@ internal sealed class CustomerQueue : MonoBehaviour
     {
         customer.SetActive(false);
         this.queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
-        if (this.queue > 0)
-            Invoke(nameof(ManageQueue), Random.Range(this.timeBetweenCustomers.x, this.timeBetweenCustomers.y));
+        Invoke(nameof(ManageQueue), Random.Range(this.timeBetweenCustomers.x, this.timeBetweenCustomers.y));
         // Debug.Log($"Customer Queue: {this.queue}");
     }
     private uint GetActiveCustomerCount()
