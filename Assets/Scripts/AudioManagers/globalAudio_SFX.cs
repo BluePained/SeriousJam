@@ -1,3 +1,4 @@
+using NUnit.Framework;
 using System;
 using UnityEngine;
 
@@ -50,7 +51,7 @@ public class globalAudio_SFX : MonoBehaviour
         //return;
         //}
 
-        s.source.volume = s.volumeMinimum; //* insert global volume SFX settings here multipled by s.volumeMinimum
+        s.source.volume = s.volumeMinimum * GlobalSettings.Instance.SFX;
         s.source.pitch = UnityEngine.Random.Range(s.pitchMinimum * pitchMin, s.pitchMinimum * pitchMax);
         s.source.Play();
     }
@@ -58,7 +59,7 @@ public class globalAudio_SFX : MonoBehaviour
     public void Stop(string name)
     {
         soundSorting s = Array.Find(sounds, sound => sound.name == name);
-        s.source.volume = s.volumeMinimum; //* insert global volume SFX settings here multipled by s.volumeMinimum
+        s.source.volume = s.volumeMinimum * GlobalSettings.Instance.SFX;
         s.source.pitch = UnityEngine.Random.Range(s.pitchMinimum * pitchMin, s.pitchMinimum * pitchMax);
         s.source.Stop();
     }
