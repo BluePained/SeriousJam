@@ -9,7 +9,7 @@ public class GrillManager : InteractableObject
     [SerializeField] private float heatLossDuration;
     [SerializeField] private float heatLossRate = 1;
     public float HeatLevel => heatLevel;
-    private FoodInteractableObject _food;
+    private FoodBase _food;
     private float _heatCooldown;
     private float _heatCooldownRate;
 
@@ -33,19 +33,19 @@ public class GrillManager : InteractableObject
 
     public override void Interact()
     {
-        if (!GameManager.Instance.GetPlayerHandState()) return;
+        if (!PlayerManager.Instance.GetPlayerHandState()) return;
         
         foreach (GrillSlot slot in placeObjectPoint)
         {
             if (slot.IsUsed) continue;
 
-            _food = GameManager.Instance.GetFoodFromPlayer();
+            _food = PlayerManager.Instance.GetFoodFromPlayer();
             
             if (_food != null)
             {
                 slot.ChangeUsedState(true);
                 slot.AssignFood(_food);
-                GameManager.Instance.ClearFoodFromPlayer();
+                PlayerManager.Instance.ClearFoodFromPlayer();
                 
                 _food.ChangeState(FoodState.OnCooking);
                 _food.ChangeLayer(LayerMask.NameToLayer("Default"));

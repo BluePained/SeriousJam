@@ -1,12 +1,21 @@
 using System;
 using UnityEngine;
 
+public enum GameState
+{
+    None,
+    Paused,
+    Playing,
+    GameOver
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    [field: SerializeField] public PlayerData PlayerData { get; private set; }
-
+    
+    [field: SerializeField] public GameState State { get; private set; }
+    
+    public event Action<GameState> OnGameStateChange;
     private void Awake()
     {
         if (Instance == null)
@@ -17,38 +26,28 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        DontDestroyOnLoad(gameObject);
     }
 
-    public bool GetPlayerHandState()
+    public void ChangeState(GameState newState)
     {
-        return PlayerData.IsHandHolding;
+        State = newState;
+        OnGameStateChange?.Invoke(State);
+        OnStateChange();
     }
 
-    public bool AssignFoodToPlayer(FoodInteractableObject food)
+    private void OnStateChange()
     {
-        return PlayerData.AssignFoodToHand(food);
-    }
-
-    public FoodInteractableObject GetFoodFromPlayer()
-    {
-        return PlayerData.FoodObject == null ? null : PlayerData.FoodObject;
-    }
-
-    public void ClearFoodFromPlayer()
-    {
-        PlayerData.ClearFoodFromPlayer();
-    }
-
-    public void EndGame()
-    {
-        Debug.Log("THE GAME ENDED SINCE THE QUEUE IS ZERO!");
-    }
-    
-    private void OnDestroy()
-    {
-        if (Instance == this)
+        switch (State)
         {
-            Instance = null;
+            case GameState.Playing:
+                break;
+            case GameState.Paused:
+                break;
+            case GameState.GameOver:
+                break;
         }
     }
+
 }

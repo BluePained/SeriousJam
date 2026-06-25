@@ -6,9 +6,9 @@ public class FoodTray : InteractableObject
 
     public override void Interact()
     {
-        if (GameManager.Instance.GetPlayerHandState()) return;
+        if (PlayerManager.Instance.GetPlayerHandState()) return;
         
         GameObject obj = Instantiate(foodPrefab);
-        GameManager.Instance.AssignFoodToPlayer(obj.GetComponent<FoodInteractableObject>());
+        PlayerManager.Instance.AssignFoodToPlayer(obj.GetComponent<FoodBase>());
     }
 }

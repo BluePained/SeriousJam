@@ -4,11 +4,11 @@ public class TrashManager : InteractableObject
 {
     public override void Interact()
     {
-        if (!GameManager.Instance.GetPlayerHandState()) return;
+        if (!PlayerManager.Instance.GetPlayerHandState()) return;
 
-        GameObject obj = GameManager.Instance.GetFoodFromPlayer().gameObject;
+        GameObject obj = PlayerManager.Instance.GetFoodFromPlayer().gameObject;
         Destroy(obj);
-        GameManager.Instance.ClearFoodFromPlayer();
+        PlayerManager.Instance.ClearFoodFromPlayer();
         
     }
 }

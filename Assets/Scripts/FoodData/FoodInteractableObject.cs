@@ -5,10 +5,10 @@ using UnityEngine.InputSystem;
 
 public enum Side
 {
-    Up,
+    Front,
     Left,
     Right,
-    Down
+    Back
 }
 
 public enum Cookedness
@@ -16,7 +16,6 @@ public enum Cookedness
     Raw,
     Undercooked,
     Cooked,
-    Overcooked,
     Burnt
 }
 
@@ -28,14 +27,17 @@ public enum FoodState
 }
 
 [Serializable]
-public class FoodSide
+public abstract class FoodSide
 {
-    [SerializeField] private Side side;
-    [SerializeField] private Cookedness cookedness;
-    [Range(0,115)] [SerializeField] private float cookednessValue;
-    private const float DEFAULT_COOK_VALUE = 0;
-    private const float MAX_COOK_VALUE = 115;
-
+    [SerializeField] protected Side side;
+    [SerializeField] protected Cookedness cookedness;
+    [Range(0,115)] [SerializeField] protected float cookednessValue;
+    protected Cookedness CachedCookedness;
+    protected const float DEFAULT_COOK_VALUE = 0;
+    protected const float MAX_COOK_VALUE = 100;
+    
+    public event Action<Side,Cookedness> OnCookednessChanged;
+    
     public Side GetSide()
     {
         return side;
@@ -50,25 +52,9 @@ public class FoodSide
     {
         side = changeSide;
     }
-
-    public void Cooking(float value)
+    
+    public virtual void Cooking(float value)
     {
-        if (cookedness == Cookedness.Burnt) return;
-        
-        cookednessValue += value;
-        
-        if(cookednessValue > MAX_COOK_VALUE)
-            cookednessValue = MAX_COOK_VALUE;
-        
-        cookedness = cookednessValue switch
-        {
-            <= 25 => Cookedness.Raw,
-            <= 50 => Cookedness.Undercooked,
-            <= 75 => Cookedness.Cooked,
-            <= 100 => Cookedness.Overcooked,
-            >= MAX_COOK_VALUE => Cookedness.Burnt,
-            _ => cookedness
-        };
 
     }
     
@@ -77,11 +63,99 @@ public class FoodSide
         cookednessValue = DEFAULT_COOK_VALUE;
         cookedness = Cookedness.Raw;
     }
+
+    public void OnCookednessChange()
+    {
+        OnCookednessChanged?.Invoke(side,cookedness);
+    }
 }
 
-public class FoodInteractableObject : InteractableObject, IFlippable
+[Serializable]
+public class FoodSideDefault : FoodSide
 {
-    [SerializeField] private FoodState foodState;
+    public FoodSideDefault(Side foodSide) : base(foodSide)
+    {
+        side = foodSide;
+    }
+
+    public override void Cooking(float value)
+    {
+        if (cookedness == Cookedness.Burnt) return;
+        
+        cookednessValue += value;
+        
+        if(cookednessValue > MAX_COOK_VALUE)
+            cookednessValue = MAX_COOK_VALUE;
+        
+        switch (cookednessValue)
+        {
+            case <= 25:
+                cookedness = Cookedness.Raw;
+                break;
+            case <= 50:
+                cookedness = Cookedness.Undercooked;
+                break;
+            case <= 75:
+                cookedness = Cookedness.Cooked;
+                break;
+            case >= MAX_COOK_VALUE:
+                cookedness = Cookedness.Burnt;
+                break;
+        }
+
+        if (CachedCookedness != cookedness)
+        {
+            CachedCookedness = cookedness;
+            OnCookednessChange();
+        }
+
+    }
+    
+}
+
+[Serializable]
+public class FoodSideThreeState : FoodSide
+{
+    public FoodSideThreeState(Side foodSide) : base(foodSide)
+    {
+        side = foodSide;
+    }
+    
+    public override void Cooking(float value)
+    {
+        if (cookedness == Cookedness.Burnt) return;
+        
+        cookednessValue += value;
+        
+        if(cookednessValue > MAX_COOK_VALUE)
+            cookednessValue = MAX_COOK_VALUE;
+        
+        switch (cookednessValue)
+        {
+            case <= 30:
+                cookedness = Cookedness.Raw;
+                break;
+            case <= 65:
+                cookedness = Cookedness.Cooked;
+                break;
+            case >= MAX_COOK_VALUE:
+                cookedness = Cookedness.Burnt;
+                break;
+        }
+        
+        if (CachedCookedness != cookedness)
+        {
+            CachedCookedness = cookedness;
+            OnCookednessChange();
+        }
+
+    }
+}
+
+public class FoodInteractableObject : MonoBehaviour
+{
+    /*[SerializeField] private FoodState foodState;
+    [SerializeReference]
     [SerializeField] private FoodSide[] side;
     [SerializeField] private FoodSO foodData;
     [SerializeField] private Side currentSide;
@@ -90,25 +164,25 @@ public class FoodInteractableObject : InteractableObject, IFlippable
     
     public Side CurrentSide => currentSide;
 
-    private Dictionary<Side, FoodSide> _sideMap;
+    private Dictionary<Side, FoodSideDefault> _sideMap;
     private FoodVisualHandler _foodVisualHandler; 
     private PlaceSlot _slot;
     private Camera _camera;
     private float _timer;
     
     public event Action<Side> NotifyFlipping;
-    
-    private void Awake()
+    */
+ /*   private void Awake()
     {
         if (foodData == null) return;
         
         //side = foodData.Side;
         
-        side = new FoodSide[foodData.Side.Length];
-        _sideMap = new Dictionary<Side, FoodSide>();
+        side = new FoodSideDefault[foodData.Side.Length];
+        _sideMap = new Dictionary<Side, FoodSideDefault>();
         for (int i = 0; i < side.Length; i++)
         {
-            side[i] = new FoodSide(foodData.Side[i].GetSide());
+            side[i] = new FoodSideDefault(foodData.Side[i].GetSide());
             _sideMap[side[i].GetSide()] = side[i];
         }
         currentSide = Side.Up;
@@ -215,7 +289,7 @@ public class FoodInteractableObject : InteractableObject, IFlippable
     private void PickUp()
     {
         if (GameManager.Instance.PlayerData.IsHandHolding) return;
-        GameManager.Instance.AssignFoodToPlayer(this);
+        //GameManager.Instance.AssignFoodToPlayer(this);
         transform.localRotation = Quaternion.Euler(pickUpRotation);
         _slot?.ChangeUsedState(false);
 
@@ -257,10 +331,11 @@ public class FoodInteractableObject : InteractableObject, IFlippable
         _timer += Time.deltaTime;
         if (_timer >= foodData.CookTime)
         {
-            if (_sideMap.TryGetValue(currentSide, out FoodSide currentFoodSide))
+            if (_sideMap.TryGetValue(currentSide, out FoodSideDefault currentFoodSide))
                 currentFoodSide.Cooking(heat);
             
             _timer = 0;
         }
-    }
+    }*/
+    
 }

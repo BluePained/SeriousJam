@@ -45,7 +45,7 @@ internal sealed class Customer : MonoBehaviour
     {
         foodDialogue.enabled = true;
         chosedFood = foods[Random.Range(0, foods.Length)];
-        foodDialogue.material = chosedFood.FoodSprite;
+        //foodDialogue.material = chosedFood.FoodSprite;
         Debug.Log($"Customer wants {chosedFood.FoodName}");
     }
     private void LeaveShop()
