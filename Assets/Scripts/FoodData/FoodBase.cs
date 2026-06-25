@@ -11,6 +11,7 @@ public abstract class FoodBase : InteractableObject, IFlippable
     [SerializeField] protected float dragZOffset = 1f;
     [SerializeField] protected Vector3 pickUpRotation = new Vector3(60,0,0);
     
+    public FoodSO FoodData { get => foodData; set => foodData = value; }
     public Side CurrentSide => currentSide;
     protected PlaceSlot Slot;
     protected Camera MainCamera;

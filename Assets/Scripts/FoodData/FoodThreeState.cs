@@ -5,6 +5,7 @@ using UnityEngine;
 public class FoodThreeState : FoodBase
 {
     [SerializeField] protected FoodSideThreeState[] side;
+    public FoodSideThreeState[] FoodSide => side;
     
     private Dictionary<Side, FoodSideThreeState> _sideMap;
     private void Awake()
