@@ -467,6 +467,7 @@ GameObject:
   - component: {fileID: 596073429}
   - component: {fileID: 596073428}
   - component: {fileID: 596073430}
+  - component: {fileID: 596073431}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -489,6 +490,7 @@ MonoBehaviour:
   <CinemachineCamera>k__BackingField: {fileID: 733929951}
   <State>k__BackingField: 0
   <ScoreManager>k__BackingField: {fileID: 596073430}
+  <DifficultyManager>k__BackingField: {fileID: 596073431}
 --- !u!4 &596073429
 Transform:
   m_ObjectHideFlags: 0
@@ -517,6 +519,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   <Score>k__BackingField: 0
+--- !u!114 &596073431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596073427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1a0160a4940df64d9a4535662e32645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DifficultyManager
+  <DifficultyValue>k__BackingField: 0
 --- !u!1 &733929949
 GameObject:
   m_ObjectHideFlags: 0
