@@ -21,8 +21,6 @@ public class FoodVisualHandler : MonoBehaviour
         _foodData = GetComponentInParent<FoodBase>();
         _meshRenderer = GetComponent<MeshRenderer>();
         _mpb = new MaterialPropertyBlock();
-        
-        Debug.Log($"{name} Renderer = {_meshRenderer.GetEntityId()}");
     }
     
     private void Start()
@@ -61,8 +59,6 @@ public class FoodVisualHandler : MonoBehaviour
 
     private void HandleCookednessState(Side side, Cookedness state)
     {
-        print( $"{gameObject.transform.parent.name} "+ side + " " + (int)state + " " + state);
-        
         _meshRenderer.GetPropertyBlock(_mpb);
         _mpb.SetFloat($"_State_{side}", (int)state);
         _meshRenderer.SetPropertyBlock(_mpb);
