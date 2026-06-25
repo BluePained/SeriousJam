@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 1112825017017597886}
   - component: {fileID: 8491317015370245997}
   - component: {fileID: 3120603385486404454}
-  m_Layer: 0
+  - component: {fileID: 651585301481406416}
+  m_Layer: 6
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3033667219593020291, guid: 6c92663e293d8c84799aab8f91f8b156, type: 3}
+  - {fileID: 2100000, guid: 5afe7ca2f4fabc3469a274c2c204cc3c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -90,6 +91,19 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &651585301481406416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 383230317622397914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d27a74bd88955648a30566026022c69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodVisualHandler
+  flipSpeed: 10
 --- !u!1 &4663075472951265345
 GameObject:
   m_ObjectHideFlags: 0
@@ -99,7 +113,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8597274830452047940}
-  m_Layer: 0
+  - component: {fileID: 8081626853938577275}
+  - component: {fileID: 1532467071250887405}
+  m_Layer: 6
   m_Name: Fish_Skewer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -114,7 +130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4663075472951265345}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -122,3 +138,42 @@ Transform:
   - {fileID: 1112825017017597886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8081626853938577275
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663075472951265345}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.04, y: 0.03, z: 0.16}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1532467071250887405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4663075472951265345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b726929d3770ce04ea652c9f1522ad38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FoodFourState
+  foodData: {fileID: 11400000, guid: a05aa67c1ced53b479603db551b22469, type: 2}
+  foodState: 0
+  currentSide: 0
+  dragZOffset: 1
+  pickUpRotation: {x: -60, y: 0, z: 0}
+  side: []

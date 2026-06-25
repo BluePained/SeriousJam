@@ -3,7 +3,7 @@ using UnityEngine;
 public class RestTray : InteractableObject
 {
     [SerializeField] private RestTraySlot[] placeObjectPoint;
-    private FoodInteractableObject _food;
+    private FoodBase _food;
     
 #if UNITY_EDITOR
     
@@ -25,18 +25,18 @@ public class RestTray : InteractableObject
     
     public override void Interact()
     {
-        if (!GameManager.Instance.GetPlayerHandState()) return;
+        if (!PlayerManager.Instance.GetPlayerHandState()) return;
         
         foreach (RestTraySlot slot in placeObjectPoint)
         {
             if (slot.IsUsed) continue;
 
-            _food = GameManager.Instance.GetFoodFromPlayer();
+            _food = PlayerManager.Instance.GetFoodFromPlayer();
             
             if (_food != null)
             {
                 slot.ChangeUsedState(true);
-                GameManager.Instance.ClearFoodFromPlayer();
+                PlayerManager.Instance.ClearFoodFromPlayer();
                 
                 _food.ChangeState(FoodState.OnPlaced);
                 _food.ChangeLayer(LayerMask.NameToLayer("Default"));

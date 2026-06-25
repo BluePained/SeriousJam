@@ -40,7 +40,7 @@ internal sealed class CustomerQueue : MonoBehaviour
         if (this.queue == 0)
         {
             if (this.GetActiveCustomerCount() == 0)
-                GameManager.Instance.EndGame();
+                PlayerManager.Instance.EndGame();
             return;
         }
         SpawnCustomer();
