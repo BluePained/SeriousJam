@@ -1,10 +1,12 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public enum GameState
 {
     None,
     Paused,
+    Initializing,
     Playing,
     GameOver
 }
@@ -13,8 +15,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
+    [field: SerializeField] public CinemachineCamera CinemachineCamera { get; private set; }
     [field: SerializeField] public GameState State { get; private set; }
-    
+    [field: SerializeField] public ScoreManager ScoreManager { get; private set; }
     public event Action<GameState> OnGameStateChange;
     private void Awake()
     {
@@ -28,6 +31,8 @@ public class GameManager : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject);
+        
+        if(ScoreManager == null) ScoreManager = GetComponent<ScoreManager>();
     }
 
     public void ChangeState(GameState newState)
@@ -41,6 +46,8 @@ public class GameManager : MonoBehaviour
     {
         switch (State)
         {
+            case GameState.Initializing:
+                break;
             case GameState.Playing:
                 break;
             case GameState.Paused:
