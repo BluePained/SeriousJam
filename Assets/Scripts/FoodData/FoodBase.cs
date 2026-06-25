@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +11,6 @@ public abstract class FoodBase : InteractableObject, IFlippable
     [SerializeField] protected float cookTime;
     [SerializeField] protected float dragZOffset = 1f;
     [SerializeField] protected Vector3 pickUpRotation = new Vector3(60,0,0);
-    
     public FoodSO FoodData { get => foodData; set => foodData = value; }
     public Side CurrentSide => currentSide;
     protected PlaceSlot Slot;
@@ -18,15 +18,15 @@ public abstract class FoodBase : InteractableObject, IFlippable
     protected float Timer;
     public event Action<Side> NotifyFlipping;
     public event Action<Side,Cookedness> NotifyCookedChanged;
-
+    
     private void Update()
     {
         if (foodState == FoodState.OnDrag)
         {
             Vector3 screenPos = Pointer.current.position.ReadValue();
-            Vector3 screenPos3D = new Vector3(screenPos.x, screenPos.y, dragZOffset);
-            Vector3 pos = MainCamera.ScreenToWorldPoint(screenPos3D);
-        
+            screenPos.z = dragZOffset;
+            Vector3 pos = MainCamera.ScreenToWorldPoint(screenPos);
+
             transform.position = pos;
         }
         
@@ -41,10 +41,16 @@ public abstract class FoodBase : InteractableObject, IFlippable
     {
         gameObject.layer = index;
 
-        foreach (Transform child in gameObject.transform)
+        void SetLayerRecursively(GameObject obj, int layer)
         {
-            child.gameObject.layer = index;
+            obj.layer = layer;
+            foreach (Transform child in obj.transform)
+            {
+                SetLayerRecursively(child.gameObject, layer);
+            }
         }
+        
+        SetLayerRecursively(gameObject, index);
     }
 
 

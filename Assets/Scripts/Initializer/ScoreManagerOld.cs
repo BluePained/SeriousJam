@@ -1,11 +1,11 @@
 using TMPro;
 using UnityEngine;
 
-internal sealed class ScoreManager : MonoBehaviour
+internal sealed class ScoreManagerOld : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI moneyLabel;
 
-    internal static ScoreManager Instance;
+    internal static ScoreManagerOld Instance;
     private uint money = default;
 
     private void Awake()
