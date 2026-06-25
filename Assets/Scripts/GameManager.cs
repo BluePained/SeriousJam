@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public CinemachineCamera CinemachineCamera { get; private set; }
     [field: SerializeField] public GameState State { get; private set; }
     [field: SerializeField] public ScoreManager ScoreManager { get; private set; }
+    [field: SerializeField] public DifficultyManager DifficultyManager { get; private set; }
     public event Action<GameState> OnGameStateChange;
     private void Awake()
     {
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         
         if(ScoreManager == null) ScoreManager = GetComponent<ScoreManager>();
+        if(DifficultyManager == null) DifficultyManager = GetComponent<DifficultyManager>();
     }
 
     public void ChangeState(GameState newState)
