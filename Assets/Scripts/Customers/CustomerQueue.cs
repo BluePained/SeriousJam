@@ -13,6 +13,9 @@ internal sealed class CustomerQueue : MonoBehaviour
     [Header("Fields")]
     [SerializeField] private uint queue = 12;
     [SerializeField] private Vector2 timeBetweenCustomers = new Vector2(0.4f, 1.3f); // x: min; y: max
+    [SerializeField] private float firstDifficultyTime;
+    [SerializeField] private float repeatingDifficultyTime;
+    [SerializeField] private float waitingTimeReduction;
     [Header("Refrences")]
     [SerializeField] private Transform[] customerSpawnPoints = new Transform[4];
     [SerializeField] private GameObject customerPrefab;
@@ -34,6 +37,7 @@ internal sealed class CustomerQueue : MonoBehaviour
         queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
         for (int i = 0; i < 4; i++)
             Invoke(nameof(ManageQueue), Random.Range(0f, 2f));
+        InvokeRepeating(nameof(IncreaseDifficulty), firstDifficultyTime, repeatingDifficultyTime);
     }
     internal void ManageQueue()
     {
@@ -75,5 +79,12 @@ internal sealed class CustomerQueue : MonoBehaviour
                 count++;
         }
         return count;
+    }
+    private void IncreaseDifficulty()
+    {
+        for (int i = 0; i < customers.Length; i++)
+        {
+            customers[i].GetComponent<Customer>().WaitingTimeInterval -= waitingTimeReduction;
+        }
     }
 }
