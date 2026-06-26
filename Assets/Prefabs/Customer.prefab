@@ -221,8 +221,9 @@ MonoBehaviour:
   foods:
   - {fileID: 11400000, guid: d1e0761e28184c442be5df6176665972, type: 2}
   - {fileID: 11400000, guid: c9489b65f01529048b3fd9f055952eac, type: 2}
-  waitingTimeInterval: {x: 3, y: 4}
+  waitingTimeInterval: 8
   itemPickTime: 0.8
+  minWaitingTime: 2
   foodDialogue: {fileID: 1612979511978947408}
   UpArrowMat: {fileID: 2100000, guid: de8759ad7ccf3ec44abb2bcd84f3b9dc, type: 2}
   DownArrowMat: {fileID: 2100000, guid: 8a86495c24574a141b160a7e2cac4d12, type: 2}
