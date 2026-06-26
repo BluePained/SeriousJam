@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -60,6 +61,7 @@ public class CustomerVisual
             clothSprite.sprite = GetRandom(customerData.Cloth);
             backHairSprite.sprite = hairIndex == 0 ? GetRandom(customerData.BlackBackHair): GetRandom(customerData.BrownBackHair);
         }
+        
     }
 
     private Sprite GetRandom(Sprite[] sprites)
@@ -68,22 +70,124 @@ public class CustomerVisual
         return sprites[Random.Range(0, sprites.Length)];
     }
 }
-public class Customer : MonoBehaviour
+public class Customer : InteractableObject
 {
-    [SerializeField] private FoodContainer foodChoice;
     [SerializeField] private CustomerVisual customerVisual;
-    
-    private void Awake()
+    [SerializeField] private FoodSO chosenFood;
+    [SerializeField] private float waitTime;
+    Coroutine _orderCoroutine;
+
+    private bool _startOrder;
+    private bool _isOutOfTime;
+
+    public void SetOrder(float time, FoodSO food)
     {
-        customerVisual.SetEmotion(CustomerEmotion.Normal);
-        customerVisual.SetCustomerVisual();
+        waitTime = time;
+        chosenFood = food;
     }
 
-    public void Order()
+    private void OnEnable()
     {
+        transform.localScale = Vector3.one;
+        customerVisual.SetEmotion(CustomerEmotion.Normal);
+        customerVisual.SetCustomerVisual();
         
+        _orderCoroutine = StartCoroutine(OnStartOrdering());
+    }
+
+
+    private void OnDisable()
+    {
+        _startOrder = false;
+        _isOutOfTime = false;
+        if (_orderCoroutine != null)
+        {
+            StopCoroutine(_orderCoroutine);
+        }
     }
     
+    private IEnumerator OnStartOrdering()
+    {
+        _startOrder = true;
+        yield return null;
+        _orderCoroutine = null;
+    }
+
+    public void Update()
+    {
+        switch (GameManager.Instance.State)
+        {
+            case GameState.Playing:
+                
+                if(_startOrder)
+                    waitTime -= Time.deltaTime;
+                
+                if (waitTime <= 0)
+                {
+                    _isOutOfTime = true;
+                    StartCoroutine(EndOrder());
+                }
+                break;
+        }
+        
+        
+    }
+
+    private IEnumerator EndOrder()
+    {
+        float animTimer = 0;
+        
+        Vector3 startScale = transform.localScale;
+        Vector3 endScale = new Vector3(1.2f, 1.2f, 1.2f);
+        while (animTimer < 0.2f)
+        {
+            animTimer += Time.deltaTime;
+            float elapsedTime = animTimer/0.2f;
+            
+            transform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime);
+            yield return null;
+        }
+        
+        transform.localScale = endScale;
+        
+        startScale = transform.localScale;
+        endScale = Vector3.zero;
+        animTimer = 0;
+        
+        while (animTimer < 0.3f)
+        {
+            animTimer += Time.deltaTime;
+            float elapsedTime = animTimer/0.3f;
+            
+            transform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime);
+            yield return null;
+        }
+        
+        transform.localScale = endScale;
+        gameObject.SetActive(false);
+        yield return null;
+    }
+
+    private void OnServedOrder(FoodSO food)
+    {
+        gameObject.SetActive(false);
+    }
+
+    public override void Interact()
+    {
+        if(_isOutOfTime) return;
+        
+        if (!PlayerManager.Instance.GetPlayerHandState()) return;
+        
+        FoodBase food = PlayerManager.Instance.GetFoodFromPlayer();
+
+        if (food != null)
+        {
+            PlayerManager.Instance.ClearFoodFromPlayer();
+            OnServedOrder(food.FoodData);
+        }
+    }
+
     /*[Header("Fields")]
     [SerializeField] private FoodSO[] foods;
     [SerializeField] private float waitingTimeInterval;
