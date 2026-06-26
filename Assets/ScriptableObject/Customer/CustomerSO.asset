@@ -101,7 +101,6 @@ MonoBehaviour:
   - {fileID: 1277163308, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   - {fileID: 1674976679, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   <Eyebrows>k__BackingField:
-  - {fileID: -1619199724, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   - {fileID: -317435461, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   - {fileID: 435718706, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   - {fileID: 813918186, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
@@ -140,6 +139,7 @@ MonoBehaviour:
   <PresetEyebrowsAngry>k__BackingField:
   - {fileID: 639274209, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   - {fileID: 281267712, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
+  - {fileID: -1619199724, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   <PresetMouthAngry>k__BackingField:
   - {fileID: 1652245027, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   - {fileID: 1927586244, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
