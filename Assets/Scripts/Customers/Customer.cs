@@ -1,12 +1,90 @@
-using System.Runtime.InteropServices;
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-/// <summary>
-/// Manages the customer behaviour.
-/// </summary>
-internal sealed class Customer : MonoBehaviour
+public enum CustomerEmotion
 {
-    [Header("Fields")]
+    Normal,
+    Confuse,
+    Disappoint,
+    Angry
+}
+
+[System.Serializable]
+public class CustomerVisual
+{
+    [SerializeField] private CustomerSO customerData;
+    
+    [SerializeField] private SpriteRenderer emotionSprite;
+    [SerializeField] private SpriteRenderer hairSprite;
+    [SerializeField] private SpriteRenderer faceAccessorySprite;
+    [SerializeField] private SpriteRenderer faceAccessoryExtraSprite;
+    [SerializeField] private SpriteRenderer eyebrowsSprite;
+    [SerializeField] private SpriteRenderer eyeSprite;
+    [SerializeField] private SpriteRenderer headSprite;
+    [SerializeField] private SpriteRenderer mouthSprite;
+    [SerializeField] private SpriteRenderer clothSprite;
+    [SerializeField] private SpriteRenderer backHairSprite;
+
+    public void SetEmotion(CustomerEmotion emotion)
+    {
+        switch (emotion)
+        {
+            case CustomerEmotion.Normal:
+                break;
+            case CustomerEmotion.Confuse:
+                break;
+            case CustomerEmotion.Disappoint:
+                break;
+            case CustomerEmotion.Angry:
+                break;
+        }
+        if(emotion != CustomerEmotion.Normal)
+            emotionSprite.gameObject.SetActive(true);
+    }
+    
+    public void SetCustomerVisual()
+    {
+        if (customerData != null)
+        {
+            int hairIndex = Random.Range(0, 1);
+            
+            emotionSprite.gameObject.SetActive(false);
+            hairSprite.sprite = hairIndex == 0 ? GetRandom(customerData.BlackHair): GetRandom(customerData.BrownHair);
+            faceAccessorySprite.sprite = GetRandom(customerData.HeadAccessories);
+            faceAccessoryExtraSprite.sprite = GetRandom(customerData.ExtraHeadAccessories);
+            eyebrowsSprite.sprite = GetRandom(customerData.Eyebrows);
+            eyeSprite.sprite = GetRandom(customerData.Eyes);
+            headSprite.sprite = GetRandom(customerData.HeadType);
+            mouthSprite.sprite = GetRandom(customerData.Mouth);
+            clothSprite.sprite = GetRandom(customerData.Cloth);
+            backHairSprite.sprite = hairIndex == 0 ? GetRandom(customerData.BlackBackHair): GetRandom(customerData.BrownBackHair);
+        }
+    }
+
+    private Sprite GetRandom(Sprite[] sprites)
+    {
+        if(sprites.Length == 0) return null;
+        return sprites[Random.Range(0, sprites.Length)];
+    }
+}
+public class Customer : MonoBehaviour
+{
+    [SerializeField] private FoodContainer foodChoice;
+    [SerializeField] private CustomerVisual customerVisual;
+    
+    private void Awake()
+    {
+        customerVisual.SetEmotion(CustomerEmotion.Normal);
+        customerVisual.SetCustomerVisual();
+    }
+
+    public void Order()
+    {
+        
+    }
+    
+    /*[Header("Fields")]
     [SerializeField] private FoodSO[] foods;
     [SerializeField] private float waitingTimeInterval;
     [SerializeField] private float itemPickTime = 0.8f;
@@ -62,5 +140,5 @@ internal sealed class Customer : MonoBehaviour
     private void Update()
     {
         Debug.Log(WaitingTimeInterval);
-    }
+    }*/
 }
