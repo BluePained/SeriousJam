@@ -1,10 +1,11 @@
 using UnityEngine;
 
-public class MainMenuManager : InteractableObject
+public class MainMenuStartButton : InteractableObject
 {
-
+    [SerializeField] private string PlayScene;
     public override void Interact()
     {
+        SceneLoaderManager.Instance.SceneLoad(PlayScene);
         print("Moving to main Scene");
     }
 }
