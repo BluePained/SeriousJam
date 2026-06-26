@@ -52,7 +52,7 @@ public class PlayerData : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(_mousePos);
 
         if (!Physics.Raycast(ray, out _hit,100,layerMask)) return;
-        
+        print("hit: " + _hit.collider.gameObject);
         if (_hit.collider.TryGetComponent<InteractableObject>(out var interactable))
         {
             interactable?.Interact();

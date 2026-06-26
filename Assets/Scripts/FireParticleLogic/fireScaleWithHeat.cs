@@ -5,8 +5,9 @@ public class fireScaleWithHeat : MonoBehaviour
 
     //use this float to directly change the flames size. the flames scale value is clamped between minSize and maxSize
     public float setFireParticleSize;
-
-    [SerializeField] private float minSize, maxSize;
+    // setting min/max size in manager so all fire particles can be of uniform scale
+    [System.NonSerialized]
+    public float minSize, maxSize;
 
     private void Update()
     {
