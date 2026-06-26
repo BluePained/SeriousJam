@@ -814,7 +814,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446659406}
   m_LocalRotation: {x: 0.006861437, y: -0.7231884, z: -0.69061106, w: -0.0027987033}
-  m_LocalPosition: {x: 0, y: 0, z: 0.01}
+  m_LocalPosition: {x: 0, y: 0, z: 0.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -822,7 +822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 272.66, y: 186.717, z: -7.5}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.011, y: 0.051}
+  m_AnchoredPosition: {x: -0.011, y: 0.052}
   m_SizeDelta: {x: 3.4771, y: 1.7015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &446659408
@@ -850,7 +850,7 @@ MonoBehaviour:
     the day!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d40aaba0bcc16d44b665e4027854ca1, type: 2}
-  m_sharedMaterial: {fileID: -8103933098788942598, guid: 4d40aaba0bcc16d44b665e4027854ca1, type: 2}
+  m_sharedMaterial: {fileID: 416577329485309931, guid: 4d40aaba0bcc16d44b665e4027854ca1, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -947,7 +947,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -8103933098788942598, guid: 4d40aaba0bcc16d44b665e4027854ca1, type: 2}
+  - {fileID: 416577329485309931, guid: 4d40aaba0bcc16d44b665e4027854ca1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
