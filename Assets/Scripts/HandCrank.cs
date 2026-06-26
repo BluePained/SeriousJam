@@ -14,7 +14,7 @@ public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IE
 
     private void Start()
     {
-        _mainCamera = Camera.main;
+        _mainCamera = GameManager.Instance.MainCamera;
     }
 
     public void OnBeginDrag(PointerEventData eventData)

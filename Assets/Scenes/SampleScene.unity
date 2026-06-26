@@ -3510,7 +3510,6 @@ MonoBehaviour:
   - {fileID: 1804148577}
   - {fileID: 855019913}
   customerPrefab: {fileID: 8905369328709360266, guid: c83e62682c6730a4fb5730a934911d50, type: 3}
-  queueHudText: {fileID: 1087570338}
 --- !u!4 &2103561799
 Transform:
   m_ObjectHideFlags: 0

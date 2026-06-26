@@ -16,13 +16,12 @@ internal sealed class CustomerQueue : MonoBehaviour
     [Header("Refrences")]
     [SerializeField] private Transform[] customerSpawnPoints = new Transform[4];
     [SerializeField] private GameObject customerPrefab;
-    [SerializeField] private TextMeshProUGUI queueHudText;
 
     private GameObject[] customers = new GameObject[4];
 
     private void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < customerSpawnPoints.Length; i++)
         {
             customers[i] = Instantiate(this.customerPrefab);
             customers[i].transform.position = customerSpawnPoints[i].position;
@@ -31,8 +30,8 @@ internal sealed class CustomerQueue : MonoBehaviour
             customer.customerQueue = this;
             customer.canBeUsed = true;
         }
-        queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
-        for (int i = 0; i < 4; i++)
+
+        for (int i = 0; i < customerSpawnPoints.Length; i++)
             Invoke(nameof(ManageQueue), Random.Range(0f, 2f));
     }
     internal void ManageQueue()
@@ -44,7 +43,7 @@ internal sealed class CustomerQueue : MonoBehaviour
             return;
         }
         SpawnCustomer();
-        queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
+       
     }
     private void SpawnCustomer()
     {
@@ -54,7 +53,6 @@ internal sealed class CustomerQueue : MonoBehaviour
             {
                 customers[i].SetActive(true);
                 this.queue--;
-                this.queueHudText.text = $"Queue: {this.queue}";
                 return;
             }
         }
@@ -62,9 +60,7 @@ internal sealed class CustomerQueue : MonoBehaviour
     internal void RemoveCustomer(GameObject customer)
     {
         customer.SetActive(false);
-        this.queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
         Invoke(nameof(ManageQueue), Random.Range(this.timeBetweenCustomers.x, this.timeBetweenCustomers.y));
-        // Debug.Log($"Customer Queue: {this.queue}");
     }
     private uint GetActiveCustomerCount()
     {

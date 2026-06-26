@@ -391,7 +391,6 @@ MonoBehaviour:
   - {fileID: 1898808403}
   - {fileID: 20811060}
   customerPrefab: {fileID: 8905369328709360266, guid: c83e62682c6730a4fb5730a934911d50, type: 3}
-  queueHudText: {fileID: 0}
 --- !u!4 &387757501
 Transform:
   m_ObjectHideFlags: 0
@@ -487,6 +486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e6d2810f355694dadfab6bb6563052, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  <MainCamera>k__BackingField: {fileID: 1416567090}
   <CinemachineCamera>k__BackingField: {fileID: 733929951}
   <State>k__BackingField: 0
   <ScoreManager>k__BackingField: {fileID: 596073430}
