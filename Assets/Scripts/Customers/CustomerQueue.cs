@@ -10,7 +10,7 @@ using TMPro;
 /// </summary>
 internal sealed class CustomerQueue : MonoBehaviour
 {
-    [Header("Fields")]
+ /*   [Header("Fields")]
     [SerializeField] private uint queue = 12;
     [SerializeField] private Vector2 timeBetweenCustomers = new Vector2(0.4f, 1.3f); // x: min; y: max
     [SerializeField] private float firstDifficultyTime;
@@ -82,5 +82,5 @@ internal sealed class CustomerQueue : MonoBehaviour
         {
             customers[i].GetComponent<Customer>().WaitingTimeInterval -= waitingTimeReduction;
         }
+}*/
     }
-}
