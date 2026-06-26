@@ -11,13 +11,12 @@ public class CameraAim : MonoBehaviour
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
     [SerializeField] private float zValue = 50;
-    
+
     private CinemachineCamera _cinemachineCamera;
     private Camera _camera;
     private void Start()
     {
         _camera = Camera.main;
-
         StartCoroutine(FindObject());
 
 
