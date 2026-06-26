@@ -2294,7 +2294,7 @@ MonoBehaviour:
   - {fileID: 756565909}
   - {fileID: 259061730}
   - {fileID: 1136937383}
-  heatLevel: 5
+  heatLevel: 0
   heatLossDuration: 3
   heatLossRate: 0.8
 --- !u!4 &1014907484

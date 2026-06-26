@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     
+    [field: SerializeField] public Camera MainCamera { get; private set; }
     [field: SerializeField] public CinemachineCamera CinemachineCamera { get; private set; }
     [field: SerializeField] public GameState State { get; private set; }
     [field: SerializeField] public ScoreManager ScoreManager { get; private set; }
