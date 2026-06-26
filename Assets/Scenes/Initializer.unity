@@ -353,6 +353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bd591fd6def64440bb1b7eeb8e581e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerManager
+  foodContainer: {fileID: 11400000, guid: 35b38cf44b7b9f94595a05582428fa53, type: 2}
   customerPrefab: {fileID: 8308116946889497407, guid: bcd538bbd25945549888aa113a47ce66, type: 3}
   customerSpawnPoints:
   - {fileID: 1591794803}
@@ -361,9 +362,11 @@ MonoBehaviour:
   - {fileID: 926023616}
   initialCustomerQueue: 10
   customerQueueInterval: 2
-  customerWaitingTime: 60
+  customerIntervalTimer: {x: 2, y: 3}
+  customerWaitingTime: 10
   customerMinWaitingTime: 45
   customers: []
+  currentCustomerQueue: 0
 --- !u!1 &596073427
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +608,7 @@ Transform:
   m_GameObject: {fileID: 926023615}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 6.8, z: 0}
+  m_LocalPosition: {x: -8, y: 3.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -717,7 +720,7 @@ Transform:
   m_GameObject: {fileID: 1035482430}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6666667, y: 6.8, z: 0}
+  m_LocalPosition: {x: -2.6666667, y: 3.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -846,7 +849,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraAim
   minY: -35
-  maxY: 3
+  maxY: 8
   minX: -50
   maxX: 50
   zValue: 50
@@ -1165,7 +1168,7 @@ Transform:
   m_GameObject: {fileID: 1591794802}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8, y: 6.8, z: 0}
+  m_LocalPosition: {x: 8, y: 3.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1256,7 +1259,7 @@ Transform:
   m_GameObject: {fileID: 1899573789}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.6666667, y: 6.8, z: 0}
+  m_LocalPosition: {x: 2.6666667, y: 3.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

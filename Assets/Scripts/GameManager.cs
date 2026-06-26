@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
     {
         State = newState;
         OnGameStateChange?.Invoke(State);
+        print($"Changing State: {State}");
         OnStateChange();
     }
 

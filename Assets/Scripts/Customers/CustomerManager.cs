@@ -1,17 +1,21 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class CustomerManager : MonoBehaviour
 {
+    [SerializeField] public FoodContainer foodContainer;
     [SerializeField] private GameObject customerPrefab;
     [SerializeField] private Transform[] customerSpawnPoints;
     [SerializeField] private int initialCustomerQueue;
     [SerializeField] private float customerQueueInterval;
+    [SerializeField] private Vector2 customerIntervalTimer;
     [SerializeField] private float customerWaitingTime;
     [SerializeField] private float customerMinWaitingTime;
     [SerializeField] private Customer[] customers;
-    private int _currentCustomerQueue;
-    public int CurrentCustomerQueue => _currentCustomerQueue;
+    [SerializeField] private int currentCustomerQueue;
+    public int CurrentCustomerQueue => currentCustomerQueue;
     
     private void Awake()
     {
@@ -22,9 +26,70 @@ public class CustomerManager : MonoBehaviour
             for (int i = 0; i < customerSpawnPoints.Length; i++)
             {
                 GameObject customerInstance = Instantiate(customerPrefab, customerSpawnPoints[i].position, Quaternion.identity);
-                //customerInstance.gameObject.SetActive(false);
+                customerInstance.gameObject.SetActive(false);
                 customers[i] = customerInstance.GetComponent<Customer>();
             }
         }
+        
+        currentCustomerQueue = initialCustomerQueue;
+    }
+
+    private void Start()
+    {
+        Invoke(nameof(StartQueue), 3f);
+    }
+
+    private void StartQueue()
+    {
+        GameManager.Instance.ChangeState(GameState.Playing);
+    }
+
+    private int GetInactiveCustomer()
+    {
+        int inactiveCustomer = customerSpawnPoints.Length;
+        foreach (Customer customer in customers)
+        {
+            if(customer.gameObject.activeSelf)
+                inactiveCustomer--;
+        }
+        
+        return inactiveCustomer;
+    }
+
+    public void UpdateCustomerWaitingTime()
+    {
+        
+    }
+
+    private void Update()
+    {
+        switch (GameManager.Instance.State)
+        {
+            case GameState.Playing:
+                if (currentCustomerQueue <= 0) return;
+                if(GetInactiveCustomer() <= 0) return;
+                customerQueueInterval -= Time.deltaTime;
+                
+                if (customerQueueInterval <= 0)
+                {
+                    foreach (Customer customer in customers)
+                    {
+                        if (customer.gameObject.activeSelf) continue;
+
+                        int foodIndex = Random.Range(0, foodContainer.FoodData.Length);
+                        
+                        customer.SetOrder(customerWaitingTime,foodContainer.FoodData[foodIndex]);
+                        customer.gameObject.SetActive(true);
+                        currentCustomerQueue--;
+                        break;
+                    }
+                    
+                    customerQueueInterval = Random.Range(customerIntervalTimer.x, customerIntervalTimer.y);
+                }
+                
+                break;
+        }
+
+        
     }
 }

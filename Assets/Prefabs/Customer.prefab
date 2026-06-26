@@ -89,7 +89,7 @@ SpriteRenderer:
   m_Size: {x: 1.28, y: 1.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1768349112976346874
 GameObject:
@@ -480,9 +480,9 @@ Transform:
   m_GameObject: {fileID: 4744351386914501259}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8961333924112457544}
   - {fileID: 8055028018334697141}
@@ -968,7 +968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5996385299782061989
 Transform:
   m_ObjectHideFlags: 0
@@ -980,7 +980,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3019656991443503595}
   m_Father: {fileID: 0}
@@ -997,7 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6afd06126e3114889108972e7cebff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Customer
-  foodChoice: {fileID: 11400000, guid: 35b38cf44b7b9f94595a05582428fa53, type: 2}
   customerVisual:
     customerData: {fileID: 11400000, guid: afac998c525711543ac04940ce68c864, type: 2}
     emotionSprite: {fileID: 8898668716643211274}
@@ -1010,6 +1009,8 @@ MonoBehaviour:
     mouthSprite: {fileID: 4063643941932950268}
     clothSprite: {fileID: 5398673469632972179}
     backHairSprite: {fileID: 73391343701391464}
+  chosenFood: {fileID: 0}
+  waitTime: 0
 --- !u!65 &5121469544990695894
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1030,4 +1031,4 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.3, y: 0.5, z: 0}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.3, z: 0}
