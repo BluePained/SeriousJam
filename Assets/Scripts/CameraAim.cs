@@ -18,8 +18,6 @@ public class CameraAim : MonoBehaviour
     {
         _camera = Camera.main;
         StartCoroutine(FindObject());
-
-
     }
 
     void Update()
