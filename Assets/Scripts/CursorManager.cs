@@ -29,8 +29,23 @@ public class CursorManager : MonoBehaviour
         Cursor.visible = false;
     }
 
+    public void ChangeCursorState(CursorLockMode mode)
+    {
+        print("Changing cursor state: " + mode);
+        Cursor.lockState = mode;
+
+        if (mode == CursorLockMode.Locked)
+        {
+            cursor.rectTransform.anchoredPosition = Vector2.zero;
+        }
+    }
+
     private void Update()
     {
-        cursor.rectTransform.position = Pointer.current.position.ReadValue();
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            print("Move cursor");
+            cursor.rectTransform.position = Pointer.current.position.ReadValue();
+        }
     }
 }

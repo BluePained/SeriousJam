@@ -359,7 +359,6 @@ GameObject:
   m_Component:
   - component: {fileID: 77957623}
   - component: {fileID: 77957625}
-  - component: {fileID: 77957624}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -382,35 +381,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
---- !u!114 &77957624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77957622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f38bda98361e1de48a4ca2bd86ea3c17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineRotationComposer
-  Composition:
-    ScreenPosition: {x: 0, y: 0.001321003}
-    DeadZone:
-      Enabled: 1
-      Size: {x: 2, y: 0.65}
-    HardLimits:
-      Enabled: 1
-      Size: {x: 2, y: 1.07}
-      Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: -10}
-  Damping: {x: 0.5, y: 0.5}
-  Lookahead:
-    Enabled: 0
-    Time: 0.121
-    Smoothing: 28.4
-    IgnoreY: 0
 --- !u!114 &77957625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +405,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 40
+    FieldOfView: 35
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 50
@@ -4431,7 +4401,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 50
-  field of view: 40
+  field of view: 35
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

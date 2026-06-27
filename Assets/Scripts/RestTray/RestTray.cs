@@ -23,7 +23,7 @@ public class RestTray : InteractableObject
     }
 #endif
     
-    public override void Interact()
+    public override void Interact(RaycastHit hit)
     {
         if (!PlayerManager.Instance.GetPlayerHandState()) return;
         

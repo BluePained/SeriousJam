@@ -15,7 +15,7 @@ public class PlayerData : MonoBehaviour
 
     private void OnEnable()
     {
-        InputManager.InputAction.Player.Click.canceled += FiredRaycast;
+        InputManager.InputAction.Player.Click.started += FiredRaycast;
         InputManager.InputAction.Player.FlipLeft.canceled += Flip;
         InputManager.InputAction.Player.FlipRight.canceled += Flip;
         InputManager.InputAction.Player.FlipOver.canceled += Flip;
@@ -23,7 +23,7 @@ public class PlayerData : MonoBehaviour
 
     private void OnDisable()
     {
-        InputManager.InputAction.Player.Click.canceled -= FiredRaycast;
+        InputManager.InputAction.Player.Click.started -= FiredRaycast;
         InputManager.InputAction.Player.FlipLeft.canceled -= Flip;
         InputManager.InputAction.Player.FlipRight.canceled -= Flip;
         InputManager.InputAction.Player.FlipOver.canceled -= Flip;
@@ -55,7 +55,7 @@ public class PlayerData : MonoBehaviour
         print("hit: " + _hit.collider.gameObject);
         if (_hit.collider.TryGetComponent<InteractableObject>(out var interactable))
         {
-            interactable?.Interact();
+            interactable?.Interact(_hit);
         }
     }
 
