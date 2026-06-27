@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Corn Skewer
   m_EditorClassIdentifier: Assembly-CSharp::FoodSOThreeState
   <FoodName>k__BackingField: Corn Skewer
-  <FoodSprite>k__BackingField: {fileID: 0}
-  <CookTime>k__BackingField: 1
+  <FoodSprite>k__BackingField: {fileID: 21300000, guid: 8fc569d3bb17653428af6ff65a40160b, type: 3}
+  <CookTime>k__BackingField: 0.5
   <Side>k__BackingField:
   - side: 0
     cookedness: 0

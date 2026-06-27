@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Mushroom Skewer
   m_EditorClassIdentifier: Assembly-CSharp::FoodSOThreeState
   <FoodName>k__BackingField: Mushroom Skewer
-  <FoodSprite>k__BackingField: {fileID: 0}
-  <CookTime>k__BackingField: 1
+  <FoodSprite>k__BackingField: {fileID: 21300000, guid: f5d4cfd806013104db7eb686c32c5bb0, type: 3}
+  <CookTime>k__BackingField: 0.5
   <Side>k__BackingField:
   - side: 0
     cookedness: 0

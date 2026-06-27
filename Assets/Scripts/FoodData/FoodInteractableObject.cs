@@ -36,6 +36,9 @@ public abstract class FoodSide
     protected const float DEFAULT_COOK_VALUE = 0;
     protected const float MAX_COOK_VALUE = 100;
     
+    public Side Side => side;
+    public Cookedness Cookedness => cookedness;
+    
     public event Action<Side,Cookedness> OnCookednessChanged;
     
     public Side GetSide()
