@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
-public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class HandCrank : InteractableObject/*, IBeginDragHandler, IDragHandler, IEndDragHandler,IPointerDownHandler*/
 {
     [SerializeField] private float rotSpeed = 1000f;
     [SerializeField] private GrillManager grillManager;
@@ -11,19 +12,32 @@ public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IE
     private float _previousAngle;
     private float _accumulatedAngle;
     private float _spinSpeed;
+    
+    private bool _isCranking;
+    private Vector2 _grabDirection;
 
     private void Start()
     {
         _mainCamera = GameManager.Instance.MainCamera;
     }
-
-    public void OnBeginDrag(PointerEventData eventData)
+    
+    public override void Interact(RaycastHit hit)
     {
+        _isCranking = true;
 
+        _grabDirection = (hit.point - transform.position).normalized;
+
+        _previousAngle = transform.eulerAngles.z;
+    }
+
+    /*public void OnBeginDrag(PointerEventData eventData)
+    {
+        print("OnBeginDrag");
     }
 
     public void OnDrag(PointerEventData eventData)
     {
+        print("OnDrag");
         float zDist = Vector3.Distance(_mainCamera.transform.position, this.transform.position);
         Vector3 screenPos = new Vector3(eventData.position.x, eventData.position.y, zDist);
         Vector3 mouseWorldPos = _mainCamera.ScreenToWorldPoint(screenPos);
@@ -55,6 +69,60 @@ public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IE
     public void OnEndDrag(PointerEventData eventData)
     {
         globalAudio_SFX.instance.Stop("crank");
+        CursorManager.Instance.ChangeCursorState(CursorLockMode.Locked);
+    }*/
+    
+    private void Update()
+    {
+        if (!_isCranking)
+            return;
+
+        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        {
+            StopCranking();
+            return;
+        }
+        
+        Vector2 mouseDelta = Mouse.current.delta.ReadValue();
+
+        Vector2 tangent = new Vector2(
+            _grabDirection.y,
+            -_grabDirection.x);
+
+        float amount = Vector2.Dot(mouseDelta, tangent);
+
+        if (Mathf.Abs(amount) < 0.01f)
+            return;
+
+        if (amount <= 0f)
+            return;
+        
+        float rotation = amount * rotSpeed * Time.deltaTime;
+
+        transform.Rotate(0f, 0f, -rotation);
+
+        _grabDirection =
+            (Quaternion.Euler(0, 0, -rotation) * _grabDirection).normalized;
+
+        float newAngle = transform.eulerAngles.z;
+        float rotatedDelta = Mathf.DeltaAngle(_previousAngle, newAngle);
+
+        _spinSpeed = rotatedDelta / Time.deltaTime;
+        _accumulatedAngle += rotatedDelta;
+
+        if (_accumulatedAngle <= -360f)
+        {
+            _accumulatedAngle += 360f;
+            OnFullRotation();
+        }
+
+        _previousAngle = newAngle;
+    }
+    
+    private void StopCranking()
+    {
+        _isCranking = false;
+        globalAudio_SFX.instance.Stop("crank");
     }
 
     private void OnFullRotation()
@@ -63,4 +131,6 @@ public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IE
         grillManager.HeatUp(Random.Range(0.1f, 1f));
         globalAudio_SFX.instance.Play("crank");
     }
+    
+
 }

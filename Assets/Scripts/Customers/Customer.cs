@@ -487,7 +487,7 @@ public class Customer : InteractableObject
         GameManager.Instance.ScoreManager.DecreaseScore(score);
     }
 
-    public override void Interact()
+    public override void Interact(RaycastHit hit)
     {
         if(_isOutOfTime) return;
         if (!PlayerManager.Instance.GetPlayerHandState()) return;
@@ -497,8 +497,8 @@ public class Customer : InteractableObject
         if (food != null)
         {
             GameObject obj = PlayerManager.Instance.GetFoodFromPlayer().gameObject;
-            Destroy(obj);
             PlayerManager.Instance.ClearFoodFromPlayer();
+            Destroy(obj);
             _startOrder = false;
             OnServedOrder(food);
         }

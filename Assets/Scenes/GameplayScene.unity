@@ -755,8 +755,24 @@ PrefabInstance:
       value: 1.9516
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6954
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.436
+      value: 0.43600005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1220,7 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4146957a3c1df8e4f951fdf0d980be0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandCrank
-  rotSpeed: 1000
+  rotSpeed: 50
   grillManager: {fileID: 1014907482}
 --- !u!65 &449951898
 BoxCollider:
@@ -2026,7 +2042,7 @@ MonoBehaviour:
   - {fileID: 259061730}
   - {fileID: 1136937383}
   heatLevel: 0
-  heatLossDuration: 3
+  heatLossDuration: 5
   heatLossRate: 0.8
 --- !u!4 &1014907484
 Transform:

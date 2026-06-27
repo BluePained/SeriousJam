@@ -72,7 +72,7 @@ public abstract class FoodBase : InteractableObject, IFlippable
         };
     }
     
-    public override void Interact()
+    public override void Interact(RaycastHit hit)
     {
         switch (foodState)
         {

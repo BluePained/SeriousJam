@@ -4,6 +4,7 @@ using UnityEngine;
 public class mainMusic : MonoBehaviour
 {
     public static mainMusic instance;
+    [SerializeField] private AudioSource audioSource;
 
     private void Awake()
     {
@@ -16,17 +17,19 @@ public class mainMusic : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        audioSource = GetComponent<AudioSource>();
 
-        if (!this.GetComponent<AudioSource>().isPlaying)
+        if (!audioSource.isPlaying)
         {
-            this.GetComponent<AudioSource>().Play();
+            audioSource.Play();
         }
     }
     private void Update()
     {
-        if (this.GetComponent<AudioSource>().volume != GlobalSettings.Instance.MainVolume)
+        if (audioSource.volume != GlobalSettings.Instance.MainVolume)
         {
-            this.GetComponent<AudioSource>().volume = GlobalSettings.Instance.MainVolume;
+            audioSource.volume = GlobalSettings.Instance.MainVolume;
         }
     }
 }
