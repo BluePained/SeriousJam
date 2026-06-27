@@ -882,7 +882,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   PlayScene: MainMenu
-  TotalScoreText: {fileID: 1008827273}
+  TotalScoreText: {fileID: 1008827275}
 --- !u!4 &768581448
 Transform:
   m_ObjectHideFlags: 0

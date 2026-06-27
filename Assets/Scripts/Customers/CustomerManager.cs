@@ -91,7 +91,7 @@ public class CustomerManager : MonoBehaviour
                 }
                 
                 if (currentCustomerQueue <= 0) return;
-                if (GetActivatedCustomer() == 4)
+                if (GetActivatedCustomer() == customers.Length)
                 {
                     customerQueueInterval = 2;
                     return;
