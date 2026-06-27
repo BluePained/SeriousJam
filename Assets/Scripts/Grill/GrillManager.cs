@@ -12,6 +12,7 @@ public class GrillManager : InteractableObject
     private FoodBase _food;
     private float _heatCooldown;
     private float _heatCooldownRate;
+    private bool isPlaying;
 
 #if UNITY_EDITOR
     
@@ -82,7 +83,9 @@ public class GrillManager : InteractableObject
     
     private void Update()
     {
-        _heatCooldown -= Time.deltaTime;
+
+
+            _heatCooldown -= Time.deltaTime;
         
         if (_heatCooldown <= 0 && heatLevel > 0)
         {
@@ -96,7 +99,23 @@ public class GrillManager : InteractableObject
                 _heatCooldownRate = 0;
                 
                 if (heatLevel < 0)
+                {
                     heatLevel = 0;
+                    if (isPlaying)
+                    {
+                        globalAudio_SFX.instance.Stop("fire");
+                        isPlaying = false;
+                    }
+                }
+                else
+                {
+                    if (!isPlaying)
+                    {
+                        globalAudio_SFX.instance.Play("fire");
+                        isPlaying = true;
+                    }
+                }
+                    
             }
             
         }
