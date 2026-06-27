@@ -56,6 +56,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Paused:
                 break;
+                //hmmmmmm i seeee
             case GameState.GameOver:
                 break;
         }

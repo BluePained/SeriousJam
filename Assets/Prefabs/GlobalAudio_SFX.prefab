@@ -76,7 +76,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ecdcb8f6f46abae49b204c13d5720006, type: 3}
     volume: 0.7
     pitch: 0.7
-    volumeMinimum: 0.7
+    volumeMinimum: 0.2
     pitchMinimum: 0.7
     isLooping: 0
     playAtStart: 0
@@ -117,5 +117,23 @@ MonoBehaviour:
     isLooping: 0
     playAtStart: 0
     source: {fileID: 0}
-  pitchMin: 0.6
+  - name: crank
+    clip: {fileID: 8300000, guid: 64c7d84ab190505468d0f59b6225d3d3, type: 3}
+    volume: 0.7
+    pitch: 0.7
+    volumeMinimum: 0.14
+    pitchMinimum: 0.7
+    isLooping: 0
+    playAtStart: 0
+    source: {fileID: 0}
+  - name: glassBreak
+    clip: {fileID: 8300000, guid: 15cdfbfbf07437a4cabb4ccf996d25c3, type: 3}
+    volume: 0.7
+    pitch: 0.7
+    volumeMinimum: 0.14
+    pitchMinimum: 0.7
+    isLooping: 0
+    playAtStart: 0
+    source: {fileID: 0}
+  pitchMin: 0.8
   pitchMax: 1.3
