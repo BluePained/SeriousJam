@@ -16,6 +16,8 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private Customer[] customers;
     [SerializeField] private int currentCustomerQueue;
     public int CurrentCustomerQueue => currentCustomerQueue;
+
+    private float _endGameTimer;
     
     private void Awake()
     {
@@ -48,6 +50,16 @@ public class CustomerManager : MonoBehaviour
         
     }
 
+    public void AddCustomerQueue(int amount)
+    {
+        if (customerQueueInterval < 1f)
+        {
+            customerQueueInterval = 2f;
+        }
+        
+        currentCustomerQueue += amount;
+    }
+
     private int GetActivatedCustomer()
     {
         int cur = 0;
@@ -69,7 +81,13 @@ public class CustomerManager : MonoBehaviour
             case GameState.Playing:
                 if (currentCustomerQueue == 0 && GetActivatedCustomer() == 0)
                 {
-                    GameManager.Instance.ChangeState(GameState.PrepareToEndGame);
+                    _endGameTimer += Time.deltaTime;
+                    
+                    if(_endGameTimer >= 2) GameManager.Instance.ChangeState(GameState.PrepareToEndGame);
+                }
+                else
+                {
+                    _endGameTimer = 0;
                 }
                 
                 if (currentCustomerQueue <= 0) return;
@@ -104,7 +122,7 @@ public class CustomerManager : MonoBehaviour
                 
                 if (currentCustomerQueue == 0 && GetActivatedCustomer() == 0)
                 {
-                    GameManager.Instance.ChangeState(GameState.PrepareToEndGame);
+                    GameManager.Instance.ChangeState(GameState.GameOver);
                 }
 
                 break;
