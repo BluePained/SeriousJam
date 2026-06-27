@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class GrillSlot : PlaceSlot
 {
-    [SerializeField] private FoodInteractableObject placedFood;
+    [SerializeField] private FoodBase placedFood;
 
-    public void AssignFood(FoodInteractableObject food)
+    public void AssignFood(FoodBase food)
     {
         placedFood = food;
     }

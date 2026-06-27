@@ -5,25 +5,37 @@ using UnityEngine;
 public class FoodVisualHandler : MonoBehaviour
 {
     [SerializeField] private float flipSpeed = 10f;
-    private FoodInteractableObject _foodData;
+    private MeshRenderer _meshRenderer;
+    private FoodBase _foodData;
     private Quaternion _targetRotation = Quaternion.identity;
+    private MaterialPropertyBlock _mpb;
 
     private void OnDisable()
     {
         _foodData.NotifyFlipping -= Flip;
+        _foodData.NotifyCookedChanged -= HandleCookednessState;
+    }
+
+    private void Awake()
+    {
+        _foodData = GetComponentInParent<FoodBase>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+        _mpb = new MaterialPropertyBlock();
     }
     
     private void Start()
     {
-        _foodData = gameObject.transform.parent.GetComponent<FoodInteractableObject>();
         _foodData.NotifyFlipping += Flip;
+        _foodData.NotifyCookedChanged += HandleCookednessState;
+        _meshRenderer.SetPropertyBlock(_mpb);
     }
+    
 
     private void Update()
     {
         if(_foodData is null) return;
         
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, _targetRotation, Time.deltaTime * flipSpeed);
+        gameObject.transform.localRotation = Quaternion.Slerp(transform.localRotation, _targetRotation, Time.deltaTime * flipSpeed);
     }
 
     private void Flip(Side flipSide)
@@ -36,13 +48,20 @@ public class FoodVisualHandler : MonoBehaviour
             case Side.Right:
                 _targetRotation = Quaternion.Euler(0, 0, 90);
                 break;
-            case Side.Up:
+            case Side.Front:
                 _targetRotation = Quaternion.Euler(0, 0, 0);
                 break;
-            case Side.Down:
+            case Side.Back:
                 _targetRotation = Quaternion.Euler(0, 0, 180);
                 break;
         }
+    }
+
+    private void HandleCookednessState(Side side, Cookedness state)
+    {
+        _meshRenderer.GetPropertyBlock(_mpb);
+        _mpb.SetFloat($"_State_{side}", (int)state);
+        _meshRenderer.SetPropertyBlock(_mpb);
     }
 
     

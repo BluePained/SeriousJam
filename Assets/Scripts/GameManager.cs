@@ -1,12 +1,26 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
+
+public enum GameState
+{
+    None,
+    Paused,
+    Initializing,
+    Playing,
+    GameOver
+}
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-
-    [field: SerializeField] public PlayerData PlayerData { get; private set; }
-
+    
+    [field: SerializeField] public Camera MainCamera { get; private set; }
+    [field: SerializeField] public CinemachineCamera CinemachineCamera { get; private set; }
+    [field: SerializeField] public GameState State { get; private set; }
+    [field: SerializeField] public ScoreManager ScoreManager { get; private set; }
+    [field: SerializeField] public DifficultyManager DifficultyManager { get; private set; }
+    public event Action<GameState> OnGameStateChange;
     private void Awake()
     {
         if (Instance == null)
@@ -17,33 +31,34 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        DontDestroyOnLoad(gameObject);
+        
+        if(ScoreManager == null) ScoreManager = GetComponent<ScoreManager>();
+        if(DifficultyManager == null) DifficultyManager = GetComponent<DifficultyManager>();
     }
 
-    public bool GetPlayerHandState()
+    public void ChangeState(GameState newState)
     {
-        return PlayerData.IsHandHolding;
+        State = newState;
+        OnGameStateChange?.Invoke(State);
+        print($"Changing State: {State}");
+        OnStateChange();
     }
 
-    public bool AssignFoodToPlayer(FoodInteractableObject food)
+    private void OnStateChange()
     {
-        return PlayerData.AssignFoodToHand(food);
-    }
-
-    public FoodInteractableObject GetFoodFromPlayer()
-    {
-        return PlayerData.FoodObject == null ? null : PlayerData.FoodObject;
-    }
-
-    public void ClearFoodFromPlayer()
-    {
-        PlayerData.ClearFoodFromPlayer();
-    }
-    
-    private void OnDestroy()
-    {
-        if (Instance == this)
+        switch (State)
         {
-            Instance = null;
+            case GameState.Initializing:
+                break;
+            case GameState.Playing:
+                break;
+            case GameState.Paused:
+                break;
+            case GameState.GameOver:
+                break;
         }
     }
+
 }

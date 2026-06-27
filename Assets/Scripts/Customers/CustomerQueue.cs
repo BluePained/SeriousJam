@@ -10,19 +10,21 @@ using TMPro;
 /// </summary>
 internal sealed class CustomerQueue : MonoBehaviour
 {
-    [Header("Fields")]
+ /*   [Header("Fields")]
     [SerializeField] private uint queue = 12;
     [SerializeField] private Vector2 timeBetweenCustomers = new Vector2(0.4f, 1.3f); // x: min; y: max
+    [SerializeField] private float firstDifficultyTime;
+    [SerializeField] private float repeatingDifficultyTime;
+    [SerializeField] private float waitingTimeReduction;
     [Header("Refrences")]
     [SerializeField] private Transform[] customerSpawnPoints = new Transform[4];
     [SerializeField] private GameObject customerPrefab;
-    [SerializeField] private TextMeshProUGUI queueHudText;
 
     private GameObject[] customers = new GameObject[4];
 
     private void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < customerSpawnPoints.Length; i++)
         {
             customers[i] = Instantiate(this.customerPrefab);
             customers[i].transform.position = customerSpawnPoints[i].position;
@@ -31,16 +33,21 @@ internal sealed class CustomerQueue : MonoBehaviour
             customer.customerQueue = this;
             customer.canBeUsed = true;
         }
-        queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
-        for (int i = 0; i < 4; i++)
+
+        for (int i = 0; i < customerSpawnPoints.Length; i++)
             Invoke(nameof(ManageQueue), Random.Range(0f, 2f));
+        InvokeRepeating(nameof(IncreaseDifficulty), firstDifficultyTime, repeatingDifficultyTime);
     }
     internal void ManageQueue()
     {
         if (this.queue == 0)
+        {
+            if (this.GetActiveCustomerCount() == 0)
+                PlayerManager.Instance.EndGame();
             return;
+        }
         SpawnCustomer();
-        queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
+       
     }
     private void SpawnCustomer()
     {
@@ -50,7 +57,6 @@ internal sealed class CustomerQueue : MonoBehaviour
             {
                 customers[i].SetActive(true);
                 this.queue--;
-                this.queueHudText.text = $"Queue: {this.queue}";
                 return;
             }
         }
@@ -58,10 +64,7 @@ internal sealed class CustomerQueue : MonoBehaviour
     internal void RemoveCustomer(GameObject customer)
     {
         customer.SetActive(false);
-        this.queueHudText.text = $"Queue: {this.queue + GetActiveCustomerCount()}";
-        if (this.queue > 0)
-            Invoke(nameof(ManageQueue), Random.Range(this.timeBetweenCustomers.x, this.timeBetweenCustomers.y));
-        // Debug.Log($"Customer Queue: {this.queue}");
+        Invoke(nameof(ManageQueue), Random.Range(this.timeBetweenCustomers.x, this.timeBetweenCustomers.y));
     }
     private uint GetActiveCustomerCount()
     {
@@ -73,4 +76,11 @@ internal sealed class CustomerQueue : MonoBehaviour
         }
         return count;
     }
-}
+    private void IncreaseDifficulty()
+    {
+        for (int i = 0; i < customers.Length; i++)
+        {
+            customers[i].GetComponent<Customer>().WaitingTimeInterval -= waitingTimeReduction;
+        }
+}*/
+    }

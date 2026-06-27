@@ -7,7 +7,7 @@ public class PlayerData : MonoBehaviour
 {
     [field: SerializeField] public Transform HandPos { get; private set; }
     [field: SerializeField] public bool IsHandHolding { get; private set; }
-    [field: SerializeField] public FoodInteractableObject FoodObject { get; private set; }
+    [field: SerializeField] public FoodBase FoodObject { get; private set; }
     [SerializeField] private Camera mainCamera;
     [SerializeField] private LayerMask layerMask;
     private Vector2 _mousePos;
@@ -35,7 +35,7 @@ public class PlayerData : MonoBehaviour
         mainCamera = Camera.main;    
     }
 
-    public bool AssignFoodToHand(FoodInteractableObject food)
+    public bool AssignFoodToHand(FoodBase food)
     {
         if(IsHandHolding) return false;
         
@@ -52,7 +52,7 @@ public class PlayerData : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(_mousePos);
 
         if (!Physics.Raycast(ray, out _hit,100,layerMask)) return;
-        
+        print("hit: " + _hit.collider.gameObject);
         if (_hit.collider.TryGetComponent<InteractableObject>(out var interactable))
         {
             interactable?.Interact();

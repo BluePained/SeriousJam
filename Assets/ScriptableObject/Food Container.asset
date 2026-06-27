@@ -1,0 +1,417 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de952dbf35e33b44bab18dbf1f263f6f, type: 3}
+  m_Name: Food Container
+  m_EditorClassIdentifier: Assembly-CSharp::FoodContainer
+  <FoodData>k__BackingField:
+  - {fileID: 11400000, guid: 086d1bffc183b434da5143b1ec5c15c8, type: 2}
+  - {fileID: 11400000, guid: 913d1acbe2aadb04aa8c56af7e2bc761, type: 2}
+  - {fileID: 11400000, guid: a05aa67c1ced53b479603db551b22469, type: 2}
+  - {fileID: 11400000, guid: 49f8692fe308ab149a1ab71bbe5fc1fe, type: 2}
+  - {fileID: 11400000, guid: 8d055c30bb2690041b4eccfe36890002, type: 2}
+  <ChickenPattern>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 1
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 3
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  <CornPattern>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  <FishPattern>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 1
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 3
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 1
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 3
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  <MeatPattern>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 1
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 1
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 3
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
+    - <FoodSide>k__BackingField: 1
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 2
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 1
+  <MushroomPattern>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 3
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 0
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
+  - <Patterns>k__BackingField:
+    - <FoodSide>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
+    - <FoodSide>k__BackingField: 3
+      <Cookedness>k__BackingField: 2
