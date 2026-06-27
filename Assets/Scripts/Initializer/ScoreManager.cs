@@ -5,26 +5,42 @@ public enum ScoreType
 {
     perfect,
     wrongOrder,
-    wrongCookedness
+    wrongCookedness,
+    unserved
 }
 
 public class ScoreManager : MonoBehaviour
 {
     [field: SerializeField] public int Score { get; private set; }
     [field: SerializeField] public int ConsecutivePerfectValue { get; private set; }
+    [field: SerializeField] public int PerfectServed { get; private set; }
+    [field: SerializeField] public int WrongOrderServed { get; private set; }
+    [field: SerializeField] public int WrongCookednessServed { get; private set; }
+    [field: SerializeField] public int UnservedCustomer { get; private set; }
+    [field: SerializeField] public int TotalCustomerServed { get; private set; }
+    [field: SerializeField] public int TotalCustomerOrder { get; private set; }
     
     public void ResetScore()
     {
         Score = 0;
+        ConsecutivePerfectValue = 0;
+        PerfectServed = 0;
+        WrongOrderServed = 0;
+        WrongCookednessServed = 0;
+        UnservedCustomer = 0;
+        TotalCustomerServed = 0;
+        TotalCustomerOrder = 0;
+        
     }
 
-    public void DecreaseScore(int score)
+    public void DecreaseScore(int score, ScoreType scoreType)
     {
         ConsecutivePerfectValue = 0;
         Score -= score;
         
         if(Score < 0) Score = 0;
         
+        TrackScore(scoreType);
         GameManager.Instance.InvokeOnScoreChange(Score);
     }
     
@@ -44,7 +60,32 @@ public class ScoreManager : MonoBehaviour
         }
         
         Score += score;
+        TrackScore(scoreType);
         GameManager.Instance.InvokeOnScoreChange(Score);
+    }
+
+    private void TrackScore(ScoreType scoreType)
+    {
+        switch (scoreType)
+        {
+            case ScoreType.perfect:
+                PerfectServed++;
+                break;
+            case ScoreType.wrongCookedness:
+                WrongCookednessServed++;
+                break;
+            case ScoreType.wrongOrder:
+                WrongOrderServed++;
+                break;
+            case ScoreType.unserved:
+                UnservedCustomer++;
+                break;
+        }
+        
+        if(scoreType != ScoreType.unserved)
+            TotalCustomerServed++;
+        
+        TotalCustomerOrder++;
     }
     
 }

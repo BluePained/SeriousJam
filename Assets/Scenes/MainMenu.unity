@@ -1286,7 +1286,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.99510133, a: 1}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3091,38 +3091,6 @@ PrefabInstance:
     - target: {fileID: 2992510714378405875, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.data[10].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: e00e1b5f0f1f719478872df90e800bb0, type: 3}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.data[10].name
-      value: fire
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.data[10].pitch
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.data[10].volume
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.data[10].isLooping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.data[10].pitchMinimum
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4031418771701584485, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
-      propertyPath: sounds.Array.data[10].volumeMinimum
-      value: 0.14
       objectReference: {fileID: 0}
     - target: {fileID: 8259626338055115290, guid: 385e104334eb1ec47b1f6caa077a425f, type: 3}
       propertyPath: m_Name

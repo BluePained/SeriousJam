@@ -228,6 +228,8 @@ public class Customer : InteractableObject
         Color startColor = dialogueBoxRenderer.color;
         Color endColor = Color.white;
 
+        globalAudio_SFX.instance.Play("customerOrdering");
+        
         while (timer <= popupTime)
         {
             timer += Time.deltaTime;
@@ -323,6 +325,7 @@ public class Customer : InteractableObject
                     {
                         print("wait time reached");
                         _startOrder = false;
+                        Penalty(10, ScoreType.unserved);
                         StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
                     }
                 }
@@ -451,12 +454,14 @@ public class Customer : InteractableObject
         
         if (food.FoodData != chosenFood) //if served food isn't the ordered food or Raw/UnderCooked
         {
-            Penalty(20);
+            globalAudio_SFX.instance.Play("angryCustomer");
+            Penalty(10, ScoreType.wrongOrder);
             StartCoroutine(EndOrder(CustomerEmotion.Angry));
         }
         else if (!CanBeServed(food))
         {
-            Penalty(20);
+            globalAudio_SFX.instance.Play("angryCustomer");
+            Penalty(5, ScoreType.wrongCookedness);
             StartCoroutine(EndOrder(CustomerEmotion.Confuse));
         }
         else
@@ -467,11 +472,21 @@ public class Customer : InteractableObject
 
             if (isCorrect)
             {
-                Reward(20,ScoreType.perfect);
+                globalAudio_SFX.instance.Play("happyCustomer");
+                int perfectValue = GameManager.Instance.ScoreManager.ConsecutivePerfectValue;
+                float amplifyAmount = perfectValue * 1.5f;
+                int roundedValue = 0;
+                if (perfectValue % 2 == 0)
+                { 
+                    roundedValue = Mathf.RoundToInt(amplifyAmount);
+                }
+                
+                Reward(20 + roundedValue,ScoreType.perfect);
                 StartCoroutine(EndOrder(CustomerEmotion.Normal));
             }
             else
             {
+                globalAudio_SFX.instance.Play("normalCustomer");
                 Reward(10,ScoreType.wrongCookedness); //lower
                 StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
             }
@@ -484,10 +499,10 @@ public class Customer : InteractableObject
         GameManager.Instance.ScoreManager.AddScore(score, scoreType);
     }
 
-    private void Penalty(int score)
+    private void Penalty(int score, ScoreType scoreType)
     {
         print("penalty");
-        GameManager.Instance.ScoreManager.DecreaseScore(score);
+        GameManager.Instance.ScoreManager.DecreaseScore(score, scoreType);
     }
 
     public override void Interact(RaycastHit hit)
