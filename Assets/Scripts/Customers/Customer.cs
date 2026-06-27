@@ -329,23 +329,6 @@ public class Customer : InteractableObject
     private IEnumerator EndOrder(CustomerEmotion emotion)
     {
         customerVisual.SetEmotion(emotion);
-
-        switch (emotion)
-        {
-            case CustomerEmotion.Disappoint:
-                Penalty();
-                break;
-            case CustomerEmotion.Angry:
-                Penalty();
-                break;
-            case CustomerEmotion.Confuse:
-                Penalty();
-                break;
-            case CustomerEmotion.Normal:
-                Reward();
-                break;
-        }
-        
         float timer = 0;
         
         Vector3 startScaleDialogue = dialogueBox.localScale;
@@ -457,13 +440,12 @@ public class Customer : InteractableObject
         
         if (food.FoodData != chosenFood) //if served food isn't the ordered food or Raw/UnderCooked
         {
-            Penalty();
+            Penalty(20);
             StartCoroutine(EndOrder(CustomerEmotion.Angry));
         }
         else if (!CanBeServed(food))
         {
-            customerVisual.SetEmotion(CustomerEmotion.Confuse);
-            Penalty();
+            Penalty(20);
             StartCoroutine(EndOrder(CustomerEmotion.Confuse));
         }
         else
@@ -474,26 +456,27 @@ public class Customer : InteractableObject
 
             if (isCorrect)
             {
-                Reward();
+                Reward(20);
                 StartCoroutine(EndOrder(CustomerEmotion.Normal));
             }
             else
             {
-                customerVisual.SetEmotion(CustomerEmotion.Disappoint);
-                Penalty();
+                Reward(10); //lower
                 StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
             }
         }
     }
 
-    private void Reward()
+    private void Reward(int score)
     {
         print("reward");
+        GameManager.Instance.ScoreManager.AddScore(score);
     }
 
-    private void Penalty()
+    private void Penalty(int score)
     {
         print("penalty");
+        GameManager.Instance.ScoreManager.DecreaseScore(score);
     }
 
     public override void Interact()
