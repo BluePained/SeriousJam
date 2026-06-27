@@ -403,6 +403,7 @@ MonoBehaviour:
   <State>k__BackingField: 0
   <ScoreManager>k__BackingField: {fileID: 596073430}
   <DifficultyManager>k__BackingField: {fileID: 596073431}
+  PlayScene: GameOver
 --- !u!4 &596073429
 Transform:
   m_ObjectHideFlags: 0

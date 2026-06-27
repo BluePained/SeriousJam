@@ -2,6 +2,7 @@ using System;
 using Unity.Cinemachine;
 using UnityEngine;
 
+
 public enum GameState
 {
     None,
@@ -20,6 +21,8 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public GameState State { get; private set; }
     [field: SerializeField] public ScoreManager ScoreManager { get; private set; }
     [field: SerializeField] public DifficultyManager DifficultyManager { get; private set; }
+
+    [field: SerializeField] public string[] TargetScene;
     public event Action<GameState> OnGameStateChange;
     private void Awake()
     {
@@ -37,6 +40,12 @@ public class GameManager : MonoBehaviour
         if(ScoreManager == null) ScoreManager = GetComponent<ScoreManager>();
         if(DifficultyManager == null) DifficultyManager = GetComponent<DifficultyManager>();
     }
+
+    private void OnGameOver()
+    {
+        SceneLoaderManager.Instance.AddSceneToLoad(TargetScene);
+    }
+ 
 
     public void ChangeState(GameState newState)
     {
@@ -57,6 +66,7 @@ public class GameManager : MonoBehaviour
             case GameState.Paused:
                 break;
             case GameState.GameOver:
+                OnGameOver();
                 break;
         }
     }
