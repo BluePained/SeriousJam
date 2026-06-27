@@ -19,7 +19,6 @@ public class GameOverManager : MonoBehaviour
     {
         foreach (GameOverStatDisplay display in GameOverStats)
         {
-            //display.StatType = 
             continue;
         }
     }
