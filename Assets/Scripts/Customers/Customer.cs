@@ -464,21 +464,21 @@ public class Customer : InteractableObject
 
             if (isCorrect)
             {
-                Reward(20);
+                Reward(20,ScoreType.perfect);
                 StartCoroutine(EndOrder(CustomerEmotion.Normal));
             }
             else
             {
-                Reward(10); //lower
+                Reward(10,ScoreType.wrongCookedness); //lower
                 StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
             }
         }
     }
 
-    private void Reward(int score)
+    private void Reward(int score, ScoreType scoreType)
     {
         print("reward");
-        GameManager.Instance.ScoreManager.AddScore(score);
+        GameManager.Instance.ScoreManager.AddScore(score, scoreType);
     }
 
     private void Penalty(int score)
