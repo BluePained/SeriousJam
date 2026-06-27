@@ -30,15 +30,6 @@ MonoBehaviour:
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 1
-    - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 2
-    - <FoodSide>k__BackingField: 2
-      <Cookedness>k__BackingField: 2
-    - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 1
-  - <Patterns>k__BackingField:
-    - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 1
       <Cookedness>k__BackingField: 2
@@ -57,13 +48,13 @@ MonoBehaviour:
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 1
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 2
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 3
@@ -80,15 +71,6 @@ MonoBehaviour:
       <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 2
       <Cookedness>k__BackingField: 3
-    - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 2
-  - <Patterns>k__BackingField:
-    - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 2
-    - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 1
-    - <FoodSide>k__BackingField: 2
-      <Cookedness>k__BackingField: 1
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 2
   <CornPattern>k__BackingField:
@@ -167,14 +149,14 @@ MonoBehaviour:
   <FishPattern>k__BackingField:
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
@@ -222,17 +204,17 @@ MonoBehaviour:
       <Cookedness>k__BackingField: 3
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
@@ -248,24 +230,6 @@ MonoBehaviour:
   <MeatPattern>k__BackingField:
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 0
-    - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 0
-    - <FoodSide>k__BackingField: 2
-      <Cookedness>k__BackingField: 0
-    - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
-  - <Patterns>k__BackingField:
-    - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 1
-    - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 1
-    - <FoodSide>k__BackingField: 2
-      <Cookedness>k__BackingField: 1
-    - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 1
-  - <Patterns>k__BackingField:
-    - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 1
       <Cookedness>k__BackingField: 2
@@ -277,20 +241,20 @@ MonoBehaviour:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 2
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 1
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 2
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 3
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
@@ -322,9 +286,9 @@ MonoBehaviour:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 2
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
@@ -340,26 +304,26 @@ MonoBehaviour:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 2
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 3
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 1
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 2
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 1
+      <Cookedness>k__BackingField: 3
   <MushroomPattern>k__BackingField:
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
@@ -379,32 +343,32 @@ MonoBehaviour:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
     - <FoodSide>k__BackingField: 3
       <Cookedness>k__BackingField: 2
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 3
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2
     - <FoodSide>k__BackingField: 3
-      <Cookedness>k__BackingField: 0
+      <Cookedness>k__BackingField: 1
   - <Patterns>k__BackingField:
     - <FoodSide>k__BackingField: 0
       <Cookedness>k__BackingField: 2

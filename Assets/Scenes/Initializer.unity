@@ -524,7 +524,8 @@ MonoBehaviour:
   <ScoreManager>k__BackingField: {fileID: 596073430}
   <DifficultyManager>k__BackingField: {fileID: 596073431}
   <CustomerManager>k__BackingField: {fileID: 596073432}
-  TargetScene: []
+  TargetScene:
+  - GameOver
 --- !u!4 &596073429
 Transform:
   m_ObjectHideFlags: 0
@@ -589,7 +590,7 @@ MonoBehaviour:
   initialCustomerQueue: 10
   customerQueueInterval: 2
   customerIntervalTimer: {x: 2, y: 5}
-  customerWaitingTime: 60
+  customerWaitingTime: 3
   customerMinWaitingTime: 45
   customers:
   - {fileID: 1064983839}
@@ -741,7 +742,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 1085290632}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -2105,7 +2106,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1566516779
 MonoBehaviour:
@@ -2127,7 +2128,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 999999999
+  m_text: 9999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 507eb030a2a3e394ba93b6d1fa0b3cb1, type: 2}
   m_sharedMaterial: {fileID: -8368565759679599294, guid: 507eb030a2a3e394ba93b6d1fa0b3cb1, type: 2}
@@ -2519,7 +2520,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 30, y: -30}
-  m_SizeDelta: {x: 350, y: 90}
+  m_SizeDelta: {x: 250, y: 90}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &1899573789
 GameObject:

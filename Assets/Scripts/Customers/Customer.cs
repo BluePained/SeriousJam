@@ -48,7 +48,7 @@ public class CustomerVisual
             case CustomerEmotion.Angry:
                 emotionSprite.sprite = customerData.AngryIcon[0];
                 eyebrowsSprite.sprite = GetRandom(customerData.PresetEyebrowsAngry);
-                mouthSprite.sprite = GetRandom(customerData.PresetEyebrowsAngry);
+                mouthSprite.sprite = GetRandom(customerData.PresetMouthAngry);
                 break;
         }
 
@@ -192,26 +192,28 @@ public class Customer : InteractableObject
         }
         
         SetPattern(chosenFood, chosenPattern); //Set all the pattern
-        _orderCoroutine = StartCoroutine(OrderCoroutine(time, food));
+        _orderCoroutine = StartCoroutine(OrderCoroutine());
     }
 
-    private IEnumerator OrderCoroutine(float time, FoodSO food)
+    private IEnumerator OrderCoroutine()
     {
         float timer = 0;
 
         Vector3 startScale = transform.localScale;
         Vector3 endScale = Vector3.one;
+        print($"Start Scale {startScale} and EndScale {endScale}");
 
         while (timer <= popupTime)
         {
             timer += Time.deltaTime;
-            float elapsedTime = timer / waitTime;
+            float elapsedTime = timer / popupTime;
             
             transform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime);
+            yield return null;
         }
         
         transform.localScale = endScale;
-        
+        print($"Transform {transform.localScale}");
         yield return new WaitForSeconds(customerThoughtTime);
         //Call dialogue
 
@@ -226,10 +228,10 @@ public class Customer : InteractableObject
         Color startColor = dialogueBoxRenderer.color;
         Color endColor = Color.white;
 
-        while (timer <= 0.3f)
+        while (timer <= popupTime)
         {
             timer += Time.deltaTime;
-            float elapsed = timer / 0.3f;
+            float elapsed = timer / popupTime;
             dialogueBox.localScale =  Vector3.Lerp(startScaleDialogue, endScaleDialogue, elapsed);
             dialogueBox.localRotation = Quaternion.Slerp(startRotation, endRot, elapsed);
             dialogueBoxRenderer.color = Color.Lerp(startColor, endColor, elapsed);
@@ -373,9 +375,10 @@ public class Customer : InteractableObject
         while (timer <= popupTime)
         {
             timer += Time.deltaTime;
-            float elapsedTime = timer / waitTime;
+            float elapsedTime = timer / popupTime;
             
             transform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime);
+            yield return null;
         }
         
         transform.localScale = endScale;

@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
 
     private void OnGameOver()
     {
+        print("GameOver");
         SceneLoaderManager.Instance.AddSceneToLoad(TargetScene);
     }
 

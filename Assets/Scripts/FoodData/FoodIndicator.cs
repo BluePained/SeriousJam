@@ -63,9 +63,7 @@ public class FoodIndicator : MonoBehaviour
         
         if (sideIndex > indicatorImage.Length)
             sideIndex = 1;
-        
-        print(sideIndex);
-        
+
         indicatorImage[sideIndex].color = cookedness switch
         {
             Cookedness.Raw => foodStateColor.Raw,
