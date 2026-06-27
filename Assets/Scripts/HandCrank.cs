@@ -40,7 +40,7 @@ public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IE
             float newAngle = transform.eulerAngles.z;
             float rotatedDelta = Mathf.DeltaAngle(_previousAngle, newAngle);
 
-            _spinSpeed = rotatedDelta / Time.deltaTime; //<- Track spin speed
+            _spinSpeed = rotatedDelta / Time.deltaTime; //<- Track spin speed go weeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
             _accumulatedAngle += rotatedDelta;
 
             if (_accumulatedAngle <= -360f)
@@ -54,7 +54,7 @@ public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IE
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        
+        globalAudio_SFX.instance.Stop("crank");
     }
 
     private void OnFullRotation()
