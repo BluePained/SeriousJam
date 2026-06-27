@@ -43,31 +43,37 @@ public class CustomerManager : MonoBehaviour
     {
         GameManager.Instance.ChangeState(GameState.Playing);
     }
-
-    private int GetInactiveCustomer()
-    {
-        int inactiveCustomer = customerSpawnPoints.Length;
-        foreach (Customer customer in customers)
-        {
-            if(customer.gameObject.activeSelf)
-                inactiveCustomer--;
-        }
-        
-        return inactiveCustomer;
-    }
-
     public void UpdateCustomerWaitingTime()
     {
         
     }
 
+    private int GetActivatedCustomer()
+    {
+        int cur = 0;
+        foreach (Customer customer in customers)
+        {
+            if (customer.gameObject.activeSelf)
+            {
+                cur++;
+            }
+        }
+
+        return cur;
+    }
+    
     private void Update()
     {
         switch (GameManager.Instance.State)
         {
             case GameState.Playing:
                 if (currentCustomerQueue <= 0) return;
-                if(GetInactiveCustomer() <= 0) return;
+                if (GetActivatedCustomer() == 4)
+                {
+                    customerQueueInterval = 2;
+                    return;
+                }
+                
                 customerQueueInterval -= Time.deltaTime;
                 
                 if (customerQueueInterval <= 0)
@@ -78,15 +84,19 @@ public class CustomerManager : MonoBehaviour
 
                         int foodIndex = Random.Range(0, foodContainer.FoodData.Length);
                         
-                        customer.SetOrder(customerWaitingTime,foodContainer.FoodData[foodIndex]);
                         customer.gameObject.SetActive(true);
+                        customer.SetOrder(customerWaitingTime,foodContainer.FoodData[foodIndex]);
                         currentCustomerQueue--;
                         break;
                     }
                     
                     customerQueueInterval = Random.Range(customerIntervalTimer.x, customerIntervalTimer.y);
                 }
-                
+
+                if (currentCustomerQueue == 0 && GetActivatedCustomer() == 0)
+                {
+                    GameManager.Instance.ChangeState(GameState.GameOver);
+                }
                 break;
         }
 

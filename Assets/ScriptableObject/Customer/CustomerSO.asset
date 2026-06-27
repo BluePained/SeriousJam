@@ -151,5 +151,7 @@ MonoBehaviour:
   - {fileID: 865172818, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   - {fileID: -629460777, guid: 22a0412f9751a5e44b6b3a96f1ee014a, type: 3}
   <AngryIcon>k__BackingField:
-  - {fileID: -596254291, guid: 4b073d67e27e63a43a757dc7c0634830, type: 3}
-  <DisappointIcon>k__BackingField: []
+  - {fileID: 993301523, guid: f675872fdba12864d9dc48a4dca1045c, type: 3}
+  <DisappointIcon>k__BackingField:
+  - {fileID: 1855166403, guid: f675872fdba12864d9dc48a4dca1045c, type: 3}
+  - {fileID: 479539627, guid: f675872fdba12864d9dc48a4dca1045c, type: 3}

@@ -38,11 +38,6 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerData.ClearFoodFromPlayer();
     }
-
-    public void EndGame()
-    {
-        Debug.Log("THE GAME ENDED SINCE THE QUEUE IS ZERO!");
-    }
     
     private void OnDestroy()
     {
