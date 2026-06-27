@@ -13,11 +13,16 @@ public class ScoreManager : MonoBehaviour
     public void DecreaseScore(int score)
     {
         Score -= score;
+        
+        if(Score < 0) Score = 0;
+        
+        GameManager.Instance.InvokeOnScoreChange(Score);
     }
     
     public void AddScore(int score)
     {
         Score += score;
+        GameManager.Instance.InvokeOnScoreChange(Score);
     }
     
 }

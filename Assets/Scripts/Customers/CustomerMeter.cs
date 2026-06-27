@@ -12,7 +12,7 @@ public class CustomerMeter : MonoBehaviour
 
     public void Start()
     {
-        this.gameObject.SetActive(false);
+        customerMeter.gameObject.SetActive(false);
     }
 
     public void OnEnable()
