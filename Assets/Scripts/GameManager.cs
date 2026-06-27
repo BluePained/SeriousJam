@@ -10,6 +10,7 @@ public enum GameState
     Paused,
     Initializing,
     Playing,
+    PrepareToEndGame,
     GameOver
 }
 
