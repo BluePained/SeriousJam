@@ -135,5 +135,14 @@ MonoBehaviour:
     isLooping: 0
     playAtStart: 0
     source: {fileID: 0}
+  - name: fire
+    clip: {fileID: 8300000, guid: e00e1b5f0f1f719478872df90e800bb0, type: 3}
+    volume: 0.7
+    pitch: 0.7
+    volumeMinimum: 0.14
+    pitchMinimum: 0.7
+    isLooping: 1
+    playAtStart: 0
+    source: {fileID: 0}
   pitchMin: 0.8
   pitchMax: 1.3

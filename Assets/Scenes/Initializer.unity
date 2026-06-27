@@ -587,10 +587,10 @@ MonoBehaviour:
   - {fileID: 1899573790}
   - {fileID: 1035482431}
   - {fileID: 926023616}
-  initialCustomerQueue: 10
+  initialCustomerQueue: 20
   customerQueueInterval: 2
   customerIntervalTimer: {x: 2, y: 5}
-  customerWaitingTime: 3
+  customerWaitingTime: 60
   customerMinWaitingTime: 45
   customers:
   - {fileID: 1064983839}

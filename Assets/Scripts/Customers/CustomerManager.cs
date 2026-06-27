@@ -19,6 +19,13 @@ public class CustomerManager : MonoBehaviour
 
     private float _endGameTimer;
     
+    private int _defaultInitialCustomerQueue;
+    private float _defaultCustomerQueueInterval;
+    private Vector2 _defaultCustomerIntervalTimer;
+    private float _defaultCustomerWaitingTime;
+    private float _defaultCustomerMinWaitingTime;
+    
+    
     private void Awake()
     {
         if (customerSpawnPoints.Length > 0 && customers.Length == 0)
@@ -128,6 +135,12 @@ public class CustomerManager : MonoBehaviour
                 break;
         }
 
+        
+    }
+
+    public void ResetValue()
+    {
+        customerQueueInterval = 2;
         
     }
 }

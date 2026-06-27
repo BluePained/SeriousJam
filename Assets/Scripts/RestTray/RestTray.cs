@@ -37,7 +37,7 @@ public class RestTray : InteractableObject
             {
                 slot.ChangeUsedState(true);
                 PlayerManager.Instance.ClearFoodFromPlayer();
-                
+                globalAudio_SFX.instance.Play("putCookedFood");
                 _food.ChangeState(FoodState.OnPlaced);
                 _food.ChangeLayer(LayerMask.NameToLayer("Default"));
                 _food.AssignSlot(slot);

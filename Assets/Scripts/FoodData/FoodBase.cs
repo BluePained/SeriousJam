@@ -90,6 +90,7 @@ public abstract class FoodBase : InteractableObject, IFlippable
         if (PlayerManager.Instance.PlayerData.IsHandHolding) return;
         PlayerManager.Instance.AssignFoodToPlayer(this);
         transform.localRotation = Quaternion.Euler(pickUpRotation);
+        globalAudio_SFX.instance.Play("grabbing");
         Slot?.ChangeUsedState(false);
 
         if (Slot is GrillSlot grillSlot)
