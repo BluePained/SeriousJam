@@ -19,7 +19,7 @@ public class CustomerManager : MonoBehaviour
     
     private void Awake()
     {
-        if (customerSpawnPoints.Length > 0)
+        if (customerSpawnPoints.Length > 0 && customers.Length == 0)
         {
             customers = new Customer[customerSpawnPoints.Length];
 
@@ -83,7 +83,7 @@ public class CustomerManager : MonoBehaviour
                         if (customer.gameObject.activeSelf) continue;
 
                         int foodIndex = Random.Range(0, foodContainer.FoodData.Length);
-                        
+
                         customer.gameObject.SetActive(true);
                         customer.SetOrder(customerWaitingTime,foodContainer.FoodData[foodIndex]);
                         currentCustomerQueue--;

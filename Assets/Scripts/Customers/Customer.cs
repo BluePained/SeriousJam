@@ -294,6 +294,8 @@ public class Customer : InteractableObject
     
     private void OnDisable()
     {
+        Debug.Log($"{name} Disabled");
+        
         _startOrder = false;
         _isOutOfTime = false;
         if (_orderCoroutine != null)
@@ -317,6 +319,7 @@ public class Customer : InteractableObject
                 
                     if (waitTime <= 0)
                     {
+                        print("wait time reached");
                         _startOrder = false;
                         StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
                     }
@@ -324,6 +327,11 @@ public class Customer : InteractableObject
                 break;
         }
         
+    }
+    
+    private void OnEnable()
+    {
+        Debug.Log($"{name} Enabled");
     }
 
     private IEnumerator EndOrder(CustomerEmotion emotion)

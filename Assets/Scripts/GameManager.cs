@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public GameState State { get; private set; }
     [field: SerializeField] public ScoreManager ScoreManager { get; private set; }
     [field: SerializeField] public DifficultyManager DifficultyManager { get; private set; }
+    [field: SerializeField] public CustomerManager CustomerManager { get; private set; }
 
     [field: SerializeField] public string[] TargetScene;
     public event Action<GameState> OnGameStateChange;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         
         if(ScoreManager == null) ScoreManager = GetComponent<ScoreManager>();
         if(DifficultyManager == null) DifficultyManager = GetComponent<DifficultyManager>();
+        if(CustomerManager == null) CustomerManager = GetComponent<CustomerManager>();
     }
 
     private void OnGameOver()

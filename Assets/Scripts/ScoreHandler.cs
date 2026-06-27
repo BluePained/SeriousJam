@@ -14,6 +14,9 @@ public class ScoreHandler : MonoBehaviour
         
         scoreText.text = "0";
         queueText.text = "0";
+
+        scoreText.text = GameManager.Instance.ScoreManager.Score.ToString();
+        queueText.text = GameManager.Instance.CustomerManager.CurrentCustomerQueue.ToString();
     }
 
     private void OnDisable()
