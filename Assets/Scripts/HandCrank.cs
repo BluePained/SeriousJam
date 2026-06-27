@@ -61,5 +61,6 @@ public class HandCrank : InteractableObject, IBeginDragHandler, IDragHandler, IE
     {
         print("Full rotation");
         grillManager.HeatUp(Random.Range(0.1f, 1f));
+        globalAudio_SFX.instance.Play("crank");
     }
 }
