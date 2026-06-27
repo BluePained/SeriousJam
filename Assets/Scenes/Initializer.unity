@@ -301,7 +301,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 387757501}
-  - component: {fileID: 387757500}
   - component: {fileID: 387757502}
   m_Layer: 0
   m_Name: CustomerQueue
@@ -310,18 +309,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &387757500
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387757499}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98f23656707f9484583faa54ec388b95, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomerQueue
 --- !u!4 &387757501
 Transform:
   m_ObjectHideFlags: 0
@@ -362,8 +349,8 @@ MonoBehaviour:
   - {fileID: 926023616}
   initialCustomerQueue: 10
   customerQueueInterval: 2
-  customerIntervalTimer: {x: 2, y: 3}
-  customerWaitingTime: 10
+  customerIntervalTimer: {x: 2, y: 5}
+  customerWaitingTime: 60
   customerMinWaitingTime: 45
   customers: []
   currentCustomerQueue: 0
