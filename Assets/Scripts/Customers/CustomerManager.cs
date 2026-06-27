@@ -67,6 +67,11 @@ public class CustomerManager : MonoBehaviour
         switch (GameManager.Instance.State)
         {
             case GameState.Playing:
+                if (currentCustomerQueue == 0 && GetActivatedCustomer() == 0)
+                {
+                    GameManager.Instance.ChangeState(GameState.PrepareToEndGame);
+                }
+                
                 if (currentCustomerQueue <= 0) return;
                 if (GetActivatedCustomer() == 4)
                 {
@@ -93,11 +98,15 @@ public class CustomerManager : MonoBehaviour
                     
                     customerQueueInterval = Random.Range(customerIntervalTimer.x, customerIntervalTimer.y);
                 }
-
+                
+                break;
+            case GameState.PrepareToEndGame:
+                
                 if (currentCustomerQueue == 0 && GetActivatedCustomer() == 0)
                 {
-                    GameManager.Instance.ChangeState(GameState.GameOver);
+                    GameManager.Instance.ChangeState(GameState.PrepareToEndGame);
                 }
+
                 break;
         }
 
