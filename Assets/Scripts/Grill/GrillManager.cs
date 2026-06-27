@@ -44,8 +44,14 @@ public class GrillManager : InteractableObject
             {
                 slot.ChangeUsedState(true);
                 slot.AssignFood(_food);
+<<<<<<< Updated upstream
                 GameManager.Instance.ClearFoodFromPlayer();
                 
+=======
+                PlayerManager.Instance.ClearFoodFromPlayer();
+                globalAudio_SFX.instance.Play("grilling");
+
+>>>>>>> Stashed changes
                 _food.ChangeState(FoodState.OnCooking);
                 _food.ChangeLayer(LayerMask.NameToLayer("Default"));
                 _food.AssignSlot(slot);
