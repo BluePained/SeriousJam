@@ -6,6 +6,5 @@ public class MainMenuStartButton : InteractableObject
     public override void Interact()
     {
         SceneLoaderManager.Instance.SceneLoad(PlayScene);
-        print("Moving to main Scene");
     }
 }
