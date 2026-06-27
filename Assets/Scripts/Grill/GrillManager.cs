@@ -45,8 +45,6 @@ public class GrillManager : InteractableObject
             {
                 slot.ChangeUsedState(true);
                 slot.AssignFood(_food);
-                GameManager.Instance.ClearFoodFromPlayer();
-                
 
                 PlayerManager.Instance.ClearFoodFromPlayer();
                 globalAudio_SFX.instance.Play("grilling");

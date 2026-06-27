@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FoodSOFourState
   <FoodName>k__BackingField: Meat Skewer
   <FoodSprite>k__BackingField: {fileID: 21300000, guid: 199adc1d6eef8044e9f5ab2d3efd418b, type: 3}
-  <CookTime>k__BackingField: 0.5
+  <CookTime>k__BackingField: 0.3
   <Side>k__BackingField:
   - side: 0
     cookedness: 0
