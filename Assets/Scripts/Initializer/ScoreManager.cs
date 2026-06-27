@@ -4,7 +4,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     [field: SerializeField] public int Score { get; private set; }
-
+    
     public void ResetScore()
     {
         Score = 0;
@@ -19,4 +19,5 @@ public class ScoreManager : MonoBehaviour
     {
         Score += score;
     }
+    
 }

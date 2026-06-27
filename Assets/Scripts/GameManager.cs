@@ -1,4 +1,5 @@
 using System;
+using Input;
 using Unity.Cinemachine;
 using UnityEngine;
 
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
             case GameState.Paused:
                 break;
             case GameState.GameOver:
+                
                 break;
         }
     }
