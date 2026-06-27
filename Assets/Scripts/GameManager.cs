@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     [field: SerializeField] public string[] TargetScene;
     public event Action<GameState> OnGameStateChange;
+    public event Action<int> OnScoreChange;
+    public event Action<int> OnQueueChange;
     private void Awake()
     {
         if (Instance == null)
@@ -45,6 +47,16 @@ public class GameManager : MonoBehaviour
     private void OnGameOver()
     {
         SceneLoaderManager.Instance.AddSceneToLoad(TargetScene);
+    }
+
+    public void InvokeOnScoreChange(int score)
+    {
+        OnScoreChange?.Invoke(score);
+    }
+
+    public void InvokeOnQueueChange(int queue)
+    {
+        OnQueueChange?.Invoke(queue);
     }
  
 

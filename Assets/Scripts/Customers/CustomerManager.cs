@@ -87,6 +87,7 @@ public class CustomerManager : MonoBehaviour
                         customer.gameObject.SetActive(true);
                         customer.SetOrder(customerWaitingTime,foodContainer.FoodData[foodIndex]);
                         currentCustomerQueue--;
+                        GameManager.Instance.InvokeOnQueueChange(currentCustomerQueue);
                         break;
                     }
                     
