@@ -792,7 +792,7 @@ GameObject:
   - component: {fileID: 297126404}
   m_Layer: 0
   m_Name: RestTray_Mesh
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1204,7 +1204,7 @@ GameObject:
   - component: {fileID: 449951897}
   m_Layer: 0
   m_Name: HandCrank
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1489,7 +1489,7 @@ GameObject:
   - component: {fileID: 689007474}
   m_Layer: 0
   m_Name: Trash
-  m_TagString: Untagged
+  m_TagString: trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2017,7 +2017,7 @@ GameObject:
   - component: {fileID: 1014907485}
   m_Layer: 0
   m_Name: Griller
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4102,7 +4102,7 @@ GameObject:
   - component: {fileID: 1926772082}
   m_Layer: 0
   m_Name: RestTray
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4477,7 +4477,7 @@ GameObject:
   - component: {fileID: 919132148209592081}
   m_Layer: 0
   m_Name: Mushroom_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4529,7 +4529,7 @@ GameObject:
   - component: {fileID: 919132148844544103}
   m_Layer: 0
   m_Name: Corn_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4581,7 +4581,7 @@ GameObject:
   - component: {fileID: 919132148866662697}
   m_Layer: 0
   m_Name: Meat_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4633,7 +4633,7 @@ GameObject:
   - component: {fileID: 919132149130645186}
   m_Layer: 0
   m_Name: Chicken_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4685,7 +4685,7 @@ GameObject:
   - component: {fileID: 919132149132067956}
   m_Layer: 0
   m_Name: FoodTray
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4737,7 +4737,7 @@ GameObject:
   - component: {fileID: 919132149516408593}
   m_Layer: 0
   m_Name: Fish_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

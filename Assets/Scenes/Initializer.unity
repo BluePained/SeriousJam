@@ -446,7 +446,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &576553766
 MonoBehaviour:
@@ -468,9 +468,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 0ec04acd9cf5c9f41bbb50bad0ff9184, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4db9c690f7cbb6348802b4f49c0082e7, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -524,8 +524,7 @@ MonoBehaviour:
   <ScoreManager>k__BackingField: {fileID: 596073430}
   <DifficultyManager>k__BackingField: {fileID: 596073431}
   <CustomerManager>k__BackingField: {fileID: 596073432}
-  TargetScene:
-  - GameOver
+  <TargetScene>k__BackingField: []
 --- !u!4 &596073429
 Transform:
   m_ObjectHideFlags: 0
@@ -555,6 +554,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScoreManager
   <Score>k__BackingField: 0
   <ConsecutivePerfectValue>k__BackingField: 0
+  <PerfectServed>k__BackingField: 0
+  <WrongOrderServed>k__BackingField: 0
+  <WrongCookednessServed>k__BackingField: 0
+  <UnservedCustomer>k__BackingField: 0
+  <TotalCustomerServed>k__BackingField: 0
+  <TotalCustomerOrder>k__BackingField: 0
 --- !u!114 &596073431
 MonoBehaviour:
   m_ObjectHideFlags: 0

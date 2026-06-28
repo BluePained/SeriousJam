@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Cursor
   - CM
+  - Clickable
+  - trash
   layers:
   - Default
   - TransparentFX

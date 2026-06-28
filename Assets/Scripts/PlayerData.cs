@@ -1,3 +1,4 @@
+using System;
 using Input;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -44,6 +45,30 @@ public class PlayerData : MonoBehaviour
         return true;
     }
 
+    private void Update()
+    {
+        if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit check, 100,
+                layerMask))
+        {
+            switch (check.collider.gameObject.tag)
+            {
+                case "Clickable":
+                    CursorManager.Instance.ChangeCursor(CursorType.click);
+                    break;
+                case "trash":
+                    CursorManager.Instance.ChangeCursor(CursorType.trash);
+                    break;
+                default: CursorManager.Instance.ChangeCursor(CursorType.normal);
+                    break;
+            }
+        }
+        else
+        {
+            CursorManager.Instance.ChangeCursor(CursorType.normal);
+        }
+        
+    }
+
     private void FiredRaycast(InputAction.CallbackContext context)
     {
         print("Fired raycast");
@@ -52,6 +77,7 @@ public class PlayerData : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(_mousePos);
 
         if (!Physics.Raycast(ray, out _hit,100,layerMask)) return;
+
         print("hit: " + _hit.collider.gameObject);
         if (_hit.collider.TryGetComponent<InteractableObject>(out var interactable))
         {
