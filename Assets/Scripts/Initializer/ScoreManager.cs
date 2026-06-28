@@ -20,6 +20,7 @@ public class ScoreManager : MonoBehaviour
     [field: SerializeField] public int TotalCustomerServed { get; private set; }
     [field: SerializeField] public int TotalCustomerOrder { get; private set; }
     
+    private int _consecutiveBadValue;
     public void ResetScore()
     {
         Score = 0;
@@ -36,9 +37,11 @@ public class ScoreManager : MonoBehaviour
     public void DecreaseScore(int score, ScoreType scoreType)
     {
         ConsecutivePerfectValue = 0;
+        _consecutiveBadValue++;
         Score -= score;
         
         if(Score < 0) Score = 0;
+        if(_consecutiveBadValue % 3 == 0 ) GameManager.Instance.CustomerManager.DecreaseCustomerQueue(_consecutiveBadValue);
         
         TrackScore(scoreType);
         GameManager.Instance.InvokeOnScoreChange(Score);
@@ -46,16 +49,18 @@ public class ScoreManager : MonoBehaviour
     
     public void AddScore(int score, ScoreType scoreType)
     {
+       
         switch (scoreType)
         {
             case ScoreType.perfect:
                 ConsecutivePerfectValue++;
-                
+                _consecutiveBadValue = 0;
                 if(ConsecutivePerfectValue % 3 == 0) GameManager.Instance.CustomerManager.AddCustomerQueue(ConsecutivePerfectValue - 1);
                 
                 break;
             case ScoreType.wrongCookedness:
                 ConsecutivePerfectValue = 0;
+                _consecutiveBadValue++;
                 break;
         }
         

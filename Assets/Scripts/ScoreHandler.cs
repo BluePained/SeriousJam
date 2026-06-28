@@ -21,6 +21,9 @@ public class ScoreHandler : MonoBehaviour
 
     private void OnDisable()
     {
+        if (GameManager.Instance == null)
+            return;
+        
         GameManager.Instance.OnScoreChange -= UpdateScoreText;
         GameManager.Instance.OnQueueChange -= UpdateQueueText;
     }

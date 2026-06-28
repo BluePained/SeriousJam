@@ -50,7 +50,8 @@ public class GameManager : MonoBehaviour
     private void OnGameOver()
     {
         print("GameOver");
-        SceneLoaderManager.Instance.AddSceneToLoad(TargetScene);
+        InputManager.ToggleActionMap(InputManager.InputAction.UI);
+        SceneLoaderManager.Instance.AddScene(TargetScene[0]);
     }
 
     public void InvokeOnScoreChange(int score)
@@ -90,6 +91,7 @@ public class GameManager : MonoBehaviour
 
     private void OnDestroy()
     {
+
         if (Instance == this)
         {
             Instance = null;

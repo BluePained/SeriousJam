@@ -524,7 +524,8 @@ MonoBehaviour:
   <ScoreManager>k__BackingField: {fileID: 596073430}
   <DifficultyManager>k__BackingField: {fileID: 596073431}
   <CustomerManager>k__BackingField: {fileID: 596073432}
-  <TargetScene>k__BackingField: []
+  <TargetScene>k__BackingField:
+  - GameOver
 --- !u!4 &596073429
 Transform:
   m_ObjectHideFlags: 0
