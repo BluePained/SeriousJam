@@ -76,7 +76,7 @@ public class HandCrank : InteractableObject/*, IBeginDragHandler, IDragHandler, 
     {
         if (!_isCranking)
             return;
-
+        CursorManager.Instance.ChangeCursor(CursorType.grab);
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             StopCranking();
@@ -122,6 +122,7 @@ public class HandCrank : InteractableObject/*, IBeginDragHandler, IDragHandler, 
     private void StopCranking()
     {
         _isCranking = false;
+        CursorManager.Instance.ChangeCursor(CursorType.normal);
         globalAudio_SFX.instance.Stop("crank");
     }
 
