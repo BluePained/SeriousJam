@@ -57,6 +57,20 @@ public class CustomerManager : MonoBehaviour
         
     }
 
+    public void DecreaseCustomerQueue(int amount)
+    {
+        if (currentCustomerQueue - amount <= 0)
+        {
+            currentCustomerQueue = 0;
+        }
+        else
+        {
+            currentCustomerQueue -= amount;
+        }
+        GameManager.Instance.InvokeOnQueueChange(currentCustomerQueue);
+        
+    }
+    
     public void AddCustomerQueue(int amount)
     {
         if (customerQueueInterval < 1f)
@@ -65,6 +79,7 @@ public class CustomerManager : MonoBehaviour
         }
         
         currentCustomerQueue += amount;
+        GameManager.Instance.InvokeOnQueueChange(currentCustomerQueue);
     }
 
     private int GetActivatedCustomer()
@@ -103,6 +118,8 @@ public class CustomerManager : MonoBehaviour
                     customerQueueInterval = 2;
                     return;
                 }
+
+                if (GameManager.Instance.DifficultyManager.DifficultyValue == GetActivatedCustomer()) return;
                 
                 customerQueueInterval -= Time.deltaTime;
                 

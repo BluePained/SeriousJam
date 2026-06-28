@@ -341,6 +341,7 @@ public class Customer : InteractableObject
 
     private IEnumerator EndOrder(CustomerEmotion emotion)
     {
+        _isOutOfTime = true;
         customerVisual.SetEmotion(emotion);
         float timer = 0;
         
@@ -495,13 +496,13 @@ public class Customer : InteractableObject
 
     private void Reward(int score, ScoreType scoreType)
     {
-        print("reward");
+        print($"Reward: {scoreType}");
         GameManager.Instance.ScoreManager.AddScore(score, scoreType);
     }
 
     private void Penalty(int score, ScoreType scoreType)
     {
-        print("penalty");
+        print($"Penalty: {scoreType}");
         GameManager.Instance.ScoreManager.DecreaseScore(score, scoreType);
     }
 
