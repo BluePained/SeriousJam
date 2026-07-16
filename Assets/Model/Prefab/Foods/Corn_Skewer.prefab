@@ -467,7 +467,7 @@ GameObject:
   - component: {fileID: 8885625143593128676}
   m_Layer: 6
   m_Name: Corn_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

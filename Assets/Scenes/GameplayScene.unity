@@ -2043,7 +2043,7 @@ MonoBehaviour:
   - {fileID: 1136937383}
   heatLevel: 0
   heatLossDuration: 5
-  heatLossRate: 0.8
+  heatLossRate: 1.5
 --- !u!4 &1014907484
 Transform:
   m_ObjectHideFlags: 0

@@ -752,7 +752,7 @@ MonoBehaviour:
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
-    FieldOfView: 35
+    FieldOfView: 50
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 50
@@ -780,7 +780,7 @@ Transform:
   m_GameObject: {fileID: 733929949}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.029, z: -1.899}
+  m_LocalPosition: {x: 0, y: 1.029, z: -1.649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -821,7 +821,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: 5
+        Gain: 10
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -832,7 +832,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: -5
+        Gain: -10
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -857,7 +857,7 @@ MonoBehaviour:
   PanAxis:
     Value: 0
     Center: 0
-    Range: {x: -40, y: 40}
+    Range: {x: -50, y: 50}
     Wrap: 0
     Recentering:
       Enabled: 0
@@ -867,7 +867,7 @@ MonoBehaviour:
   TiltAxis:
     Value: 0
     Center: 0
-    Range: {x: -2, y: 40}
+    Range: {x: -2, y: 50}
     Wrap: 0
     Recentering:
       Enabled: 0
@@ -1860,7 +1860,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 50
-  field of view: 35
+  field of view: 50
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1887,7 +1887,7 @@ Transform:
   m_GameObject: {fileID: 1416567085}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.029, z: -1.899}
+  m_LocalPosition: {x: 0, y: 1.029, z: -1.649}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
