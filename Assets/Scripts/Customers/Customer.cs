@@ -108,13 +108,20 @@ public class Customer : InteractableObject
     [SerializeField] private SpriteRenderer[] patternRenderer;
     private static readonly Color WhiteAlpha = new Color(1, 1, 1, 0);
     
+    private CustomerOrder _customerOrder;
+    
     private float _maxWaitTime;
     Coroutine _orderCoroutine;
 
     private bool _startOrder;
     private bool _isOutOfTime;
 
-   public void SetOrder(float time, FoodSO food)
+    private void Awake()
+    {
+        _customerOrder = GetComponent<CustomerOrder>();
+    }
+
+    public void SetOrder(float time, FoodSO food)
     {
         coll.enabled = false;
         transform.localScale = Vector3.zero;
@@ -256,7 +263,7 @@ public class Customer : InteractableObject
     public void SetPattern(FoodSO food ,List<FoodPattern> pattern)
     {
         foodRenderer.sprite = food.FoodSprite;
-
+        
         if (pattern.Count == 2)
         {
             patternRenderer[0].color = pattern[0].Cookedness switch
@@ -294,6 +301,7 @@ public class Customer : InteractableObject
                 };
             }
         }
+        _customerOrder.OnCustomerOrder(food.FoodSprite, patternRenderer);
     }
     
     private void OnDisable()
@@ -492,6 +500,8 @@ public class Customer : InteractableObject
                 StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
             }
         }
+        
+        _customerOrder.OnCustomerServed();
     }
 
     private void Reward(int score, ScoreType scoreType)
