@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 7702604926732343694}
   m_Layer: 6
   m_Name: Chicken_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

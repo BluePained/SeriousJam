@@ -1609,6 +1609,7 @@ GameObject:
   - component: {fileID: 5996385299782061989}
   - component: {fileID: 6979844249274406362}
   - component: {fileID: 4742291410654851355}
+  - component: {fileID: 8349802755730720944}
   - component: {fileID: 5121469544990695894}
   m_Layer: 0
   m_Name: Customer
@@ -1689,6 +1690,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerMeter
   customerMeter: {fileID: 7678998673060468060}
+--- !u!114 &8349802755730720944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8308116946889497407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2285fdb237fd434eacc163af781b192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerOrder
 --- !u!65 &5121469544990695894
 BoxCollider:
   m_ObjectHideFlags: 0

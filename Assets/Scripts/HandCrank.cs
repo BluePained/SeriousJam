@@ -1,4 +1,5 @@
 using System;
+using Input;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
@@ -24,6 +25,7 @@ public class HandCrank : InteractableObject/*, IBeginDragHandler, IDragHandler, 
     public override void Interact(RaycastHit hit)
     {
         _isCranking = true;
+        InputManager.ToggleActionMap(InputManager.InputAction.UI);
 
         _grabDirection = (hit.point - transform.position).normalized;
 
@@ -122,6 +124,7 @@ public class HandCrank : InteractableObject/*, IBeginDragHandler, IDragHandler, 
     private void StopCranking()
     {
         _isCranking = false;
+        InputManager.ToggleActionMap(InputManager.InputAction.Player);
         CursorManager.Instance.ChangeCursor(CursorType.normal);
         globalAudio_SFX.instance.Stop("crank");
     }
