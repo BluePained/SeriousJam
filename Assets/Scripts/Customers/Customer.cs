@@ -48,7 +48,7 @@ public class CustomerVisual
             case CustomerEmotion.Angry:
                 emotionSprite.sprite = customerData.AngryIcon[0];
                 eyebrowsSprite.sprite = GetRandom(customerData.PresetEyebrowsAngry);
-                mouthSprite.sprite = GetRandom(customerData.PresetEyebrowsAngry);
+                mouthSprite.sprite = GetRandom(customerData.PresetMouthAngry);
                 break;
         }
 
@@ -192,26 +192,28 @@ public class Customer : InteractableObject
         }
         
         SetPattern(chosenFood, chosenPattern); //Set all the pattern
-        _orderCoroutine = StartCoroutine(OrderCoroutine(time, food));
+        _orderCoroutine = StartCoroutine(OrderCoroutine());
     }
 
-    private IEnumerator OrderCoroutine(float time, FoodSO food)
+    private IEnumerator OrderCoroutine()
     {
         float timer = 0;
 
         Vector3 startScale = transform.localScale;
         Vector3 endScale = Vector3.one;
+        print($"Start Scale {startScale} and EndScale {endScale}");
 
         while (timer <= popupTime)
         {
             timer += Time.deltaTime;
-            float elapsedTime = timer / waitTime;
+            float elapsedTime = timer / popupTime;
             
             transform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime);
+            yield return null;
         }
         
         transform.localScale = endScale;
-        
+        print($"Transform {transform.localScale}");
         yield return new WaitForSeconds(customerThoughtTime);
         //Call dialogue
 
@@ -226,10 +228,12 @@ public class Customer : InteractableObject
         Color startColor = dialogueBoxRenderer.color;
         Color endColor = Color.white;
 
-        while (timer <= 0.3f)
+        globalAudio_SFX.instance.Play("customerOrdering");
+        
+        while (timer <= popupTime)
         {
             timer += Time.deltaTime;
-            float elapsed = timer / 0.3f;
+            float elapsed = timer / popupTime;
             dialogueBox.localScale =  Vector3.Lerp(startScaleDialogue, endScaleDialogue, elapsed);
             dialogueBox.localRotation = Quaternion.Slerp(startRotation, endRot, elapsed);
             dialogueBoxRenderer.color = Color.Lerp(startColor, endColor, elapsed);
@@ -321,6 +325,7 @@ public class Customer : InteractableObject
                     {
                         print("wait time reached");
                         _startOrder = false;
+                        Penalty(10, ScoreType.unserved);
                         StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
                     }
                 }
@@ -336,6 +341,7 @@ public class Customer : InteractableObject
 
     private IEnumerator EndOrder(CustomerEmotion emotion)
     {
+        _isOutOfTime = true;
         customerVisual.SetEmotion(emotion);
         float timer = 0;
         
@@ -373,9 +379,10 @@ public class Customer : InteractableObject
         while (timer <= popupTime)
         {
             timer += Time.deltaTime;
-            float elapsedTime = timer / waitTime;
+            float elapsedTime = timer / popupTime;
             
             transform.localScale = Vector3.Lerp(startScale, endScale, elapsedTime);
+            yield return null;
         }
         
         transform.localScale = endScale;
@@ -448,12 +455,14 @@ public class Customer : InteractableObject
         
         if (food.FoodData != chosenFood) //if served food isn't the ordered food or Raw/UnderCooked
         {
-            Penalty(20);
+            globalAudio_SFX.instance.Play("angryCustomer");
+            Penalty(10, ScoreType.wrongOrder);
             StartCoroutine(EndOrder(CustomerEmotion.Angry));
         }
         else if (!CanBeServed(food))
         {
-            Penalty(20);
+            globalAudio_SFX.instance.Play("angryCustomer");
+            Penalty(5, ScoreType.wrongCookedness);
             StartCoroutine(EndOrder(CustomerEmotion.Confuse));
         }
         else
@@ -464,11 +473,21 @@ public class Customer : InteractableObject
 
             if (isCorrect)
             {
-                Reward(20,ScoreType.perfect);
+                globalAudio_SFX.instance.Play("happyCustomer");
+                int perfectValue = GameManager.Instance.ScoreManager.ConsecutivePerfectValue;
+                float amplifyAmount = perfectValue * 1.5f;
+                int roundedValue = 0;
+                if (perfectValue % 2 == 0)
+                { 
+                    roundedValue = Mathf.RoundToInt(amplifyAmount);
+                }
+                
+                Reward(20 + roundedValue,ScoreType.perfect);
                 StartCoroutine(EndOrder(CustomerEmotion.Normal));
             }
             else
             {
+                globalAudio_SFX.instance.Play("normalCustomer");
                 Reward(10,ScoreType.wrongCookedness); //lower
                 StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
             }
@@ -477,17 +496,17 @@ public class Customer : InteractableObject
 
     private void Reward(int score, ScoreType scoreType)
     {
-        print("reward");
+        print($"Reward: {scoreType}");
         GameManager.Instance.ScoreManager.AddScore(score, scoreType);
     }
 
-    private void Penalty(int score)
+    private void Penalty(int score, ScoreType scoreType)
     {
-        print("penalty");
-        GameManager.Instance.ScoreManager.DecreaseScore(score);
+        print($"Penalty: {scoreType}");
+        GameManager.Instance.ScoreManager.DecreaseScore(score, scoreType);
     }
 
-    public override void Interact()
+    public override void Interact(RaycastHit hit)
     {
         if(_isOutOfTime) return;
         if (!PlayerManager.Instance.GetPlayerHandState()) return;
@@ -497,8 +516,8 @@ public class Customer : InteractableObject
         if (food != null)
         {
             GameObject obj = PlayerManager.Instance.GetFoodFromPlayer().gameObject;
-            Destroy(obj);
             PlayerManager.Instance.ClearFoodFromPlayer();
+            Destroy(obj);
             _startOrder = false;
             OnServedOrder(food);
         }

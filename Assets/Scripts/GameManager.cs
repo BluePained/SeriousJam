@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public DifficultyManager DifficultyManager { get; private set; }
     [field: SerializeField] public CustomerManager CustomerManager { get; private set; }
 
-    [field: SerializeField] public string[] TargetScene;
+    [field: SerializeField] public string[] TargetScene { get; private set; }
     public event Action<GameState> OnGameStateChange;
     public event Action<int> OnScoreChange;
     public event Action<int> OnQueueChange;
@@ -49,7 +49,9 @@ public class GameManager : MonoBehaviour
 
     private void OnGameOver()
     {
-        SceneLoaderManager.Instance.AddSceneToLoad(TargetScene);
+        print("GameOver");
+        InputManager.ToggleActionMap(InputManager.InputAction.UI);
+        SceneLoaderManager.Instance.AddScene(TargetScene[0]);
     }
 
     public void InvokeOnScoreChange(int score)
@@ -81,11 +83,18 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.Paused:
                 break;
-                //hmmmmmm i seeee
             case GameState.GameOver:
                 OnGameOver();
                 break;
         }
     }
 
+    private void OnDestroy()
+    {
+
+        if (Instance == this)
+        {
+            Instance = null;
+        }
+    }
 }

@@ -755,8 +755,24 @@ PrefabInstance:
       value: 1.9516
       objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.6954
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.436
+      value: 0.43600005
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1151388028547126963, guid: 5010bc6efd9ddc647833dca55be1b297, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -776,7 +792,7 @@ GameObject:
   - component: {fileID: 297126404}
   m_Layer: 0
   m_Name: RestTray_Mesh
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1188,7 +1204,7 @@ GameObject:
   - component: {fileID: 449951897}
   m_Layer: 0
   m_Name: HandCrank
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1220,7 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4146957a3c1df8e4f951fdf0d980be0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HandCrank
-  rotSpeed: 1000
+  rotSpeed: 50
   grillManager: {fileID: 1014907482}
 --- !u!65 &449951898
 BoxCollider:
@@ -1473,7 +1489,7 @@ GameObject:
   - component: {fileID: 689007474}
   m_Layer: 0
   m_Name: Trash
-  m_TagString: Untagged
+  m_TagString: trash
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2001,7 +2017,7 @@ GameObject:
   - component: {fileID: 1014907485}
   m_Layer: 0
   m_Name: Griller
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2026,7 +2042,7 @@ MonoBehaviour:
   - {fileID: 259061730}
   - {fileID: 1136937383}
   heatLevel: 0
-  heatLossDuration: 3
+  heatLossDuration: 5
   heatLossRate: 0.8
 --- !u!4 &1014907484
 Transform:
@@ -4086,7 +4102,7 @@ GameObject:
   - component: {fileID: 1926772082}
   m_Layer: 0
   m_Name: RestTray
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4461,7 +4477,7 @@ GameObject:
   - component: {fileID: 919132148209592081}
   m_Layer: 0
   m_Name: Mushroom_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4513,7 +4529,7 @@ GameObject:
   - component: {fileID: 919132148844544103}
   m_Layer: 0
   m_Name: Corn_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4565,7 +4581,7 @@ GameObject:
   - component: {fileID: 919132148866662697}
   m_Layer: 0
   m_Name: Meat_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4617,7 +4633,7 @@ GameObject:
   - component: {fileID: 919132149130645186}
   m_Layer: 0
   m_Name: Chicken_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4669,7 +4685,7 @@ GameObject:
   - component: {fileID: 919132149132067956}
   m_Layer: 0
   m_Name: FoodTray
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4721,7 +4737,7 @@ GameObject:
   - component: {fileID: 919132149516408593}
   m_Layer: 0
   m_Name: Fish_Skewer
-  m_TagString: Untagged
+  m_TagString: Clickable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

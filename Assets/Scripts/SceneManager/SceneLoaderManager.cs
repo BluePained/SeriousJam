@@ -38,6 +38,11 @@ public class SceneLoaderManager : MonoBehaviour
         if (loadingScreen) loadingScreen.SetActive(true);
         StartCoroutine(LoadSceneAsyncAdditive(sceneName));
     }
+
+    public void AddScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName,  LoadSceneMode.Additive);
+    }
     
     public IEnumerator LoadSceneAsyncAdditive(string[] sceneName)
     {

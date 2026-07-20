@@ -19,6 +19,13 @@ public class CustomerManager : MonoBehaviour
 
     private float _endGameTimer;
     
+    private int _defaultInitialCustomerQueue;
+    private float _defaultCustomerQueueInterval;
+    private Vector2 _defaultCustomerIntervalTimer;
+    private float _defaultCustomerWaitingTime;
+    private float _defaultCustomerMinWaitingTime;
+    
+    
     private void Awake()
     {
         if (customerSpawnPoints.Length > 0 && customers.Length == 0)
@@ -50,6 +57,20 @@ public class CustomerManager : MonoBehaviour
         
     }
 
+    public void DecreaseCustomerQueue(int amount)
+    {
+        if (currentCustomerQueue - amount <= 0)
+        {
+            currentCustomerQueue = 0;
+        }
+        else
+        {
+            currentCustomerQueue -= amount;
+        }
+        GameManager.Instance.InvokeOnQueueChange(currentCustomerQueue);
+        
+    }
+    
     public void AddCustomerQueue(int amount)
     {
         if (customerQueueInterval < 1f)
@@ -58,6 +79,7 @@ public class CustomerManager : MonoBehaviour
         }
         
         currentCustomerQueue += amount;
+        GameManager.Instance.InvokeOnQueueChange(currentCustomerQueue);
     }
 
     private int GetActivatedCustomer()
@@ -91,11 +113,13 @@ public class CustomerManager : MonoBehaviour
                 }
                 
                 if (currentCustomerQueue <= 0) return;
-                if (GetActivatedCustomer() == 4)
+                if (GetActivatedCustomer() == customers.Length)
                 {
                     customerQueueInterval = 2;
                     return;
                 }
+
+                if (GameManager.Instance.DifficultyManager.DifficultyValue == GetActivatedCustomer()) return;
                 
                 customerQueueInterval -= Time.deltaTime;
                 
@@ -128,6 +152,12 @@ public class CustomerManager : MonoBehaviour
                 break;
         }
 
+        
+    }
+
+    public void ResetValue()
+    {
+        customerQueueInterval = 2;
         
     }
 }

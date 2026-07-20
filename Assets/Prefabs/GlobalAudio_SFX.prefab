@@ -48,9 +48,9 @@ MonoBehaviour:
   - name: angryCustomer
     clip: {fileID: 8300000, guid: 73d00d9bec25068438e4156208ba6702, type: 3}
     volume: 0.7
-    pitch: 0.7
+    pitch: 2
     volumeMinimum: 0.7
-    pitchMinimum: 0.7
+    pitchMinimum: 1.8
     isLooping: 0
     playAtStart: 0
     source: {fileID: 0}
@@ -60,7 +60,7 @@ MonoBehaviour:
     pitch: 0.7
     volumeMinimum: 0.7
     pitchMinimum: 0.7
-    isLooping: 1
+    isLooping: 0
     playAtStart: 0
     source: {fileID: 0}
   - name: grabbing
@@ -84,18 +84,18 @@ MonoBehaviour:
   - name: happyCustomer
     clip: {fileID: 8300000, guid: 4226cc85044c80d4f9d202e417bcc3c8, type: 3}
     volume: 0.7
-    pitch: 0.7
+    pitch: 2
     volumeMinimum: 0.7
-    pitchMinimum: 0.7
+    pitchMinimum: 2
     isLooping: 0
     playAtStart: 0
     source: {fileID: 0}
   - name: normalCustomer
     clip: {fileID: 8300000, guid: c1beb31f69b55784fa57062f5cdcc29d, type: 3}
     volume: 0.7
-    pitch: 0.7
+    pitch: 2.6
     volumeMinimum: 0.7
-    pitchMinimum: 0.7
+    pitchMinimum: 2.4
     isLooping: 0
     playAtStart: 0
     source: {fileID: 0}
@@ -133,6 +133,15 @@ MonoBehaviour:
     volumeMinimum: 0.14
     pitchMinimum: 0.7
     isLooping: 0
+    playAtStart: 0
+    source: {fileID: 0}
+  - name: fire
+    clip: {fileID: 8300000, guid: e00e1b5f0f1f719478872df90e800bb0, type: 3}
+    volume: 0.7
+    pitch: 0.7
+    volumeMinimum: 0.14
+    pitchMinimum: 0.7
+    isLooping: 1
     playAtStart: 0
     source: {fileID: 0}
   pitchMin: 0.8
