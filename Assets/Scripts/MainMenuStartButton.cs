@@ -6,6 +6,6 @@ public class MainMenuStartButton : InteractableObject
     public override void Interact(RaycastHit hit)
     {
         CursorManager.Instance.ChangeCursorState(CursorLockMode.Locked);
-        SceneLoaderManager.Instance.SceneLoad(PlayScene);
+        SceneLoaderManager.Instance.MoveToScene(PlayScene);
     }
 }

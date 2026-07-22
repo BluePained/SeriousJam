@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class GameOverManager : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField] private string PlayScene;
+    [SerializeField] private string MainMenuScene;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text consecutiveScoreText;
     [SerializeField] private TMP_Text perfectServedText;
@@ -40,7 +40,7 @@ public class GameOverManager : MonoBehaviour
         Destroy(CursorManager.Instance.gameObject);
         Destroy(globalAudio_SFX.instance.gameObject);
         Destroy(mainMusic.instance.gameObject);
-        SceneLoaderManager.Instance.SceneLoad(PlayScene);
+        SceneLoaderManager.Instance.MoveToScene(MainMenuScene);
     }
 
 }

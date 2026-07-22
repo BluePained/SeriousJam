@@ -47,6 +47,8 @@ public class CursorManager : MonoBehaviour
 
     public void ChangeCursor(CursorType cursorType)
     {
+        if (!cursor) return;
+       
         switch (cursorType)
         {
             case CursorType.normal:

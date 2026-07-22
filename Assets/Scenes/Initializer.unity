@@ -1520,7 +1520,7 @@ MonoBehaviour:
   - {fileID: 1035482431}
   - {fileID: 1899573790}
   - {fileID: 1591794803}
-  initialCustomerQueue: 20
+  initialCustomerQueue: 1
   customerQueueInterval: 2
   customerIntervalTimer: {x: 2, y: 5}
   customerWaitingTime: 60

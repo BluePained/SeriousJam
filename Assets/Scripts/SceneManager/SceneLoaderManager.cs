@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Input;
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,11 +10,15 @@ using UnityEngine.SceneManagement;
 public class SceneLoaderManager : MonoBehaviour
 {
     public static SceneLoaderManager Instance;
-    
+
     [SerializeField] private GameObject loadingScreen;
     [SerializeField] private TMP_Text loadingText;
     [SerializeField] private float playerEnableActionMapDelay = 1;
     [SerializeField] private ShaderVariantCollection shaderVariantCollection;
+    [SerializeField] private Animator LoadingScreenAnimator;
+
+    private string SceneToLoad;
+
 
     private void Awake()
     {
@@ -24,27 +30,65 @@ public class SceneLoaderManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+
         DontDestroyOnLoad(gameObject);
+        loadingScreen.SetActive(true);
+        ToggleLoadingScreen(false);
     }
 
-    public void SceneLoad(string sceneName)
+    private void ToggleLoadingScreen(bool Seeable)
     {
-        SceneManager.LoadScene(sceneName);
+        if (loadingScreen == null || LoadingScreenAnimator == null)
+        {
+            return;
+        }
+
+        if (Seeable)
+        {
+            //loadingScreen.SetActive(true);
+            LoadingScreenAnimator.Play("Anim_FadeLoadingScreenRev");
+        }
+        else
+        {
+            LoadingScreenAnimator.Play("Anim_FadeLoadingScreen");
+        }
     }
+
+    // Also connecteed to an Animation Event The Fade Anim Reversed anim clip
+    private void OnScreenCoveredToLoad()
+    {
+        SceneLoad();
+    }
+
+    public void MoveToScene(string SceneName)
+    {
+        if (String.IsNullOrEmpty(SceneName)) return;
+        SceneToLoad = SceneName;
+        ToggleLoadingScreen(true);
+    }
+
     
+    private void SceneLoad()
+    {
+        if (SceneToLoad.Length <= 0) return;
+        //if (loadingScreen) loadingScreen.SetActive(true);
+        StartCoroutine(LoadSceneAsync(new string[] { SceneToLoad }, false));
+        SceneToLoad = null;
+    }
+
     public void AddSceneToLoad(string[] sceneName)
     {
         if (loadingScreen) loadingScreen.SetActive(true);
-        StartCoroutine(LoadSceneAsyncAdditive(sceneName));
+        StartCoroutine(LoadSceneAsync(sceneName, true));
     }
 
     public void AddScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName,  LoadSceneMode.Additive);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
     }
-    
-    public IEnumerator LoadSceneAsyncAdditive(string[] sceneName)
+
+
+    public IEnumerator LoadSceneAsync(string[] sceneName, bool Additive)
     {
         if (loadingText)
         {
@@ -64,8 +108,15 @@ public class SceneLoaderManager : MonoBehaviour
         foreach (string scene in sceneName)
         {
             if (SceneManager.GetSceneByName(scene).isLoaded) continue;
-            AsyncOperation async = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
-
+            AsyncOperation async;
+            if (Additive)
+            {
+                async = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+            }
+            else
+            {
+                async = SceneManager.LoadSceneAsync(scene);
+            }
             if (async == null) continue;
             async.allowSceneActivation = false;
 
@@ -83,9 +134,9 @@ public class SceneLoaderManager : MonoBehaviour
             }
         }
 
-
         loadingText.text = "Loading Complete.";
-        loadingScreen.SetActive(false);
+        ToggleLoadingScreen(false);
+        //loadingScreen.SetActive(false);
         yield return new WaitForSeconds(playerEnableActionMapDelay);
         InputManager.ToggleActionMap(InputManager.InputAction.Player);
         StopAllCoroutines();

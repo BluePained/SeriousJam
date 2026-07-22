@@ -687,6 +687,7 @@ Transform:
   - {fileID: 1901330234}
   - {fileID: 1948898392}
   - {fileID: 72783086}
+  - {fileID: 2051143489}
   m_Father: {fileID: 1552174873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &235442169
@@ -828,13 +829,14 @@ GameObject:
   - component: {fileID: 366460727}
   - component: {fileID: 366460729}
   - component: {fileID: 366460728}
+  - component: {fileID: 366460730}
   m_Layer: 5
   m_Name: LoadingScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &366460727
 RectTransform:
   m_ObjectHideFlags: 0
@@ -852,7 +854,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1922, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &366460728
@@ -893,6 +895,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 366460726}
   m_CullTransparentMesh: 1
+--- !u!95 &366460730
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 366460726}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0984de9506206643bc8b108069dcb66, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &421260510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2518,6 +2542,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1072698494}
   - component: {fileID: 1072698495}
+  - component: {fileID: 1072698496}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -2557,6 +2582,29 @@ MonoBehaviour:
   loadingText: {fileID: 1383670663}
   playerEnableActionMapDelay: 1
   shaderVariantCollection: {fileID: 0}
+  LoadingScreenAnimator: {fileID: 1072698496}
+--- !u!95 &1072698496
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072698493}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a0984de9506206643bc8b108069dcb66, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1129054563
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2707,7 +2755,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 216203465}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
       propertyPath: m_LocalScale.x
@@ -2719,7 +2767,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: 0.049999952
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2735,7 +2783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
       propertyPath: m_LocalRotation.y
@@ -2743,7 +2791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4622,6 +4670,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!4 &2051143489 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 165e447960ce78e449bbb09f305aa2a4, type: 3}
+  m_PrefabInstance: {fileID: 1179426765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2085870863
 GameObject:
   m_ObjectHideFlags: 0
@@ -4670,4 +4723,3 @@ SceneRoots:
   - {fileID: 867699368}
   - {fileID: 1442407637}
   - {fileID: 561370274}
-  - {fileID: 1179426765}

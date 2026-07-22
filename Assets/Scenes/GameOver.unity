@@ -1149,7 +1149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4065d6ccb639a3d439dca9fec2cbe819, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  PlayScene: MainMenu
+  MainMenuScene: MainMenu
   scoreText: {fileID: 1742066747}
   consecutiveScoreText: {fileID: 628333321}
   perfectServedText: {fileID: 162259136}
@@ -1754,6 +1754,7 @@ MonoBehaviour:
   loadingText: {fileID: 493413511}
   playerEnableActionMapDelay: 1
   shaderVariantCollection: {fileID: 0}
+  LoadingScreenAnimator: {fileID: 0}
 --- !u!4 &1298985407
 Transform:
   m_ObjectHideFlags: 0
