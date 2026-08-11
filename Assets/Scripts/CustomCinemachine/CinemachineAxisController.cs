@@ -1,4 +1,7 @@
 using Input;
+using System.Linq;
+
+//using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,11 +15,24 @@ namespace CustomCinemachine
         private void OnEnable()
         {
             InputManager.OnActionMapChanged += OnActionMapChanged;
+            GlobalSettings.Instance.OnSensitivityChanged += OnSensitivityChanged;
         }
 
         private void OnDisable()
         {
             InputManager.OnActionMapChanged -= OnActionMapChanged;
+        }
+
+
+        private void OnSensitivityChanged(int NewSens)
+        {
+            if (inputAxisController == null) return;
+            {
+                // X Axis Sens
+                SetNewSens("Look X (Pan)", NewSens);
+                // Y Axis Sens
+                SetNewSens("Look Y (Tilt)", -NewSens);
+            }
         }
 
         private void OnActionMapChanged(InputActionMap actionMap)
@@ -54,6 +70,16 @@ namespace CustomCinemachine
                         c.Enabled = enabledState;
                         return;
                     }
+                }
+            }
+        }
+
+        private void SetNewSens(string axisName, float NewSens) { 
+            foreach (var c in inputAxisController.Controllers)
+            {
+                if (c.Name == axisName)
+                {
+                    c.Input.Gain = NewSens;
                 }
             }
         }
