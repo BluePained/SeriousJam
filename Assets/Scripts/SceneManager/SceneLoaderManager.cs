@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
-using System.Linq;
 using Input;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;

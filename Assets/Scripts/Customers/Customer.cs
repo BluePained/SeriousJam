@@ -335,6 +335,7 @@ public class Customer : InteractableObject
                         _startOrder = false;
                         Penalty(10, ScoreType.unserved);
                         StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
+                        _customerOrder.OnCustomerLeaving();
                     }
                 }
                 break;
@@ -500,8 +501,7 @@ public class Customer : InteractableObject
                 StartCoroutine(EndOrder(CustomerEmotion.Disappoint));
             }
         }
-        
-        _customerOrder.OnCustomerServed();
+        _customerOrder.OnCustomerLeaving();
     }
 
     private void Reward(int score, ScoreType scoreType)

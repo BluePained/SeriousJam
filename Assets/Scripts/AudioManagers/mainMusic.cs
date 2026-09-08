@@ -1,4 +1,3 @@
-using NUnit.Framework;
 using UnityEngine;
 
 public class mainMusic : MonoBehaviour
@@ -27,9 +26,9 @@ public class mainMusic : MonoBehaviour
     }
     private void Update()
     {
-        if (audioSource.volume != GlobalSettings.Instance.MainVolume)
+        if (audioSource.volume != GlobalSettings.Instance.MusicVolume)
         {
-            audioSource.volume = GlobalSettings.Instance.MainVolume;
+            //audioSource.volume = GlobalSettings.Instance.MusicVolume;
         }
     }
 }

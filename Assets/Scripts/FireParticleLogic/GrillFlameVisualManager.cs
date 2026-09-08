@@ -15,7 +15,7 @@ public class GrillFlameVisualManager : MonoBehaviour
 
     private void Start()
     {
-        print(TempMeterPointer.transform.rotation);
+        //print(TempMeterPointer.transform.rotation);
         if (grillManager == null)
         {
             print("Grill Manager not set in: " + this.name);

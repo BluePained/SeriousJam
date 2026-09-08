@@ -1,7 +1,4 @@
 using Input;
-using System.Linq;
-
-//using NUnit.Framework;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,19 +8,32 @@ namespace CustomCinemachine
     public class CinemachineAxisController : MonoBehaviour
     {
         [SerializeField] private CinemachineInputAxisController inputAxisController;
-
+        [SerializeField] private InputActionReference lookAction;
         private void OnEnable()
         {
             InputManager.OnActionMapChanged += OnActionMapChanged;
-            GlobalSettings.Instance.OnSensitivityChanged += OnSensitivityChanged;
+            //GlobalSettings.Instance.OnSensitivityChanged += OnSensitivityChanged;
+            GlobalSettings.Instance.OnSensitivityChanged += ApplySensitivity;
+            ApplySensitivity(GlobalSettings.Instance.CamSensitivity);
         }
 
         private void OnDisable()
         {
             InputManager.OnActionMapChanged -= OnActionMapChanged;
+            //GlobalSettings.Instance.OnSensitivityChanged -= OnSensitivityChanged;
+            GlobalSettings.Instance.OnSensitivityChanged -= ApplySensitivity;
         }
 
 
+
+        private void ApplySensitivity(int NewSens)
+        {
+            lookAction.action.ApplyParameterOverride("scaleVector2:x", NewSens);
+            lookAction.action.ApplyParameterOverride("scaleVector2:y", NewSens);
+        }
+
+        // Sensitivity through Gain
+        /*
         private void OnSensitivityChanged(int NewSens)
         {
             if (inputAxisController == null) return;
@@ -34,6 +44,7 @@ namespace CustomCinemachine
                 SetNewSens("Look Y (Tilt)", -NewSens);
             }
         }
+        */
 
         private void OnActionMapChanged(InputActionMap actionMap)
         {
@@ -74,6 +85,8 @@ namespace CustomCinemachine
             }
         }
 
+        // Sensivity trough gain
+        /*
         private void SetNewSens(string axisName, float NewSens) { 
             foreach (var c in inputAxisController.Controllers)
             {
@@ -83,5 +96,6 @@ namespace CustomCinemachine
                 }
             }
         }
+        */
     }
 }

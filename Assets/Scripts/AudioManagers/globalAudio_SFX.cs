@@ -1,9 +1,12 @@
-using NUnit.Framework;
 using System;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class globalAudio_SFX : MonoBehaviour
 {
+    [SerializeField]
+    private AudioMixerGroup SfxMixerGroup;
+
     public static globalAudio_SFX instance;
     public soundSorting[] sounds;
     public float pitchMin = 0.6f, pitchMax = 1.3f;
@@ -23,10 +26,11 @@ public class globalAudio_SFX : MonoBehaviour
         foreach (soundSorting s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
+            s.source.outputAudioMixerGroup = SfxMixerGroup;
             s.source.clip = s.clip;
 
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
+            //s.source.volume = s.volume;
+            //s.source.pitch = s.pitch;
             s.source.loop = s.isLooping;
 
             if (s.playAtStart)
@@ -51,16 +55,16 @@ public class globalAudio_SFX : MonoBehaviour
         //return;
         //}
 
-        s.source.volume = s.volumeMinimum * GlobalSettings.Instance.SfxVolume;
-        s.source.pitch = UnityEngine.Random.Range(s.pitchMinimum * pitchMin, s.pitchMinimum * pitchMax);
+        //s.source.volume = s.volumeMinimum;
+        //s.source.pitch = UnityEngine.Random.Range(s.pitchMinimum * pitchMin, s.pitchMinimum * pitchMax);
         s.source.Play();
     }
 
     public void Stop(string name)
     {
         soundSorting s = Array.Find(sounds, sound => sound.name == name);
-        s.source.volume = s.volumeMinimum * GlobalSettings.Instance.SfxVolume;
-        s.source.pitch = UnityEngine.Random.Range(s.pitchMinimum * pitchMin, s.pitchMinimum * pitchMax);
+        //s.source.volume = s.volumeMinimum;
+        //s.source.pitch = UnityEngine.Random.Range(s.pitchMinimum * pitchMin, s.pitchMinimum * pitchMax);
         s.source.Stop();
     }
 }

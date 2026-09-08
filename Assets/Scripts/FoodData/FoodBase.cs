@@ -21,7 +21,7 @@ public abstract class FoodBase : InteractableObject, IFlippable
     
     private void Update()
     {
-        if (foodState == FoodState.OnDrag)
+        if (foodState == FoodState.OnDrag && Cursor.lockState == CursorLockMode.Locked)
         {
             Vector3 screenPos = Pointer.current.position.ReadValue();
             screenPos.z = dragZOffset;

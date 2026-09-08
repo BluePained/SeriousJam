@@ -47,6 +47,7 @@ public class PlayerData : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance && GameManager.Instance.State == GameState.Paused) return;
         if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out RaycastHit check, 100,
                 layerMask))
         {
@@ -71,6 +72,7 @@ public class PlayerData : MonoBehaviour
 
     private void FiredRaycast(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance && GameManager.Instance.State == GameState.Paused) return; 
         print("Fired raycast");
         
         _mousePos = Pointer.current.position.ReadValue();

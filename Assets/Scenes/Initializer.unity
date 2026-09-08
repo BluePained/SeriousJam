@@ -1520,7 +1520,7 @@ MonoBehaviour:
   - {fileID: 1035482431}
   - {fileID: 1899573790}
   - {fileID: 1591794803}
-  initialCustomerQueue: 1
+  initialCustomerQueue: 10
   customerQueueInterval: 2
   customerIntervalTimer: {x: 2, y: 5}
   customerWaitingTime: 60
@@ -1911,6 +1911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: CustomCinemachine::CustomCinemachine.CinemachineAxisController
   inputAxisController: {fileID: 733929954}
+  lookAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!114 &733929954
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,7 +1934,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: 10
+        Gain: 1
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -1944,7 +1945,7 @@ MonoBehaviour:
       Enabled: 1
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 052faaac586de48259a63d0c4782560b, type: 3}
-        Gain: -10
+        Gain: -1
         CancelDeltaTime: 0
       InputValue: 0
       Driver:

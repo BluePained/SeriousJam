@@ -29,7 +29,7 @@ public class CustomerOrder : MonoBehaviour
         _orderCoroutine = StartCoroutine(OrderCoroutine(true));
     }
 
-    public void OnCustomerServed()
+    public void OnCustomerLeaving()
     {
         _orderCoroutine = null;
         _orderCoroutine = StartCoroutine(OrderCoroutine(false));
